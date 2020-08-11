@@ -4,14 +4,37 @@
   
   <url>
     <loc>https://sourjp.github.io/categories/</loc>
+    <lastmod>2020-08-11T20:53:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/tags/hugo/</loc>
+    <lastmod>2020-08-11T20:53:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/posts/hugo/</loc>
+    <lastmod>2020-08-11T20:53:54+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://sourjp.github.io/</loc>
+    <lastmod>2020-08-11T20:53:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/posts/</loc>
+    <lastmod>2020-08-11T20:53:54+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://sourjp.github.io/tags/</loc>
+    <lastmod>2020-08-11T20:53:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/categories/tech/</loc>
+    <lastmod>2020-08-11T20:53:54+09:00</lastmod>
   </url>
   
 </urlset>
