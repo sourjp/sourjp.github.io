@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Articles on My New Hugo Site</title>
+    <title>Articles on note.</title>
     <link>http://sourjp.github.io/article/</link>
-    <description>Recent content in Articles on My New Hugo Site</description>
+    <description>Recent content in Articles on note.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>&amp;copy; sourjp</copyright>
     <lastBuildDate>Tue, 11 Aug 2020 17:41:04 +0900</lastBuildDate>
     
 	<atom:link href="http://sourjp.github.io/article/index.xml" rel="self" type="application/rss+xml" />
