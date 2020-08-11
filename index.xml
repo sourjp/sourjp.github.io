@@ -5,35 +5,19 @@
     <link>https://sourjp.github.io/</link>
     <description>Recent content on note.</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <copyright>&amp;copy; sourjp</copyright>
-    <lastBuildDate>Tue, 11 Aug 2020 17:41:04 +0900</lastBuildDate>
     
 	<atom:link href="https://sourjp.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Test</title>
-      <link>https://sourjp.github.io/article/test/</link>
-      <pubDate>Tue, 11 Aug 2020 17:41:04 +0900</pubDate>
+      <title>Hello</title>
+      <link>https://sourjp.github.io/hello/</link>
+      <pubDate>Tue, 11 Aug 2020 21:38:10 +0900</pubDate>
       
-      <guid>https://sourjp.github.io/article/test/</guid>
-      <description>aaaa</description>
-    </item>
-    
-    <item>
-      <title>Hugo始めました</title>
-      <link>https://sourjp.github.io/my-first-post/</link>
-      <pubDate>Tue, 11 Aug 2020 14:53:16 +0900</pubDate>
-      
-      <guid>https://sourjp.github.io/my-first-post/</guid>
-      <description>ありがちだけど、今後のためにHugoの使い方を簡単にまとめておく。
-Hugo Golang製の静的サイトジェネレータ。高速。
-Theme 出始めは少なかったようだけど、今では結構ある。ここら辺がシンプルで好みで、このサイトはPicklesを使っているが、、、cssいじるかも。
- Pickles Cactus  Deploy AWS, Firebaseなど色々用意されているが、GitHub Pagesが無料だし定番ぽい。
-https://gohugo.io/hosting-and-deployment/hosting-on-github/
-git submodule add https://github.com/mismith0227/hugo_theme_pickles thmes/pickles
-Update Settings なんじゃこりゃ</description>
+      <guid>https://sourjp.github.io/hello/</guid>
+      <description>hell-</description>
     </item>
     
   </channel>
