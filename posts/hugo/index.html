@@ -82,65 +82,61 @@
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>Hugo始めた。</p>
-<p>今後のためにググっても見つからなかった部分をメモする。</p>
-<h1 id="hugoについて">Hugoについて</h1>
+    <h1 id="hugoについて">Hugoについて</h1>
 <p>Golang製の静的サイトジェネレータ。高速。</p>
 <h1 id="theme選び">Theme選び</h1>
-<p>出始めは少なかったようだけど、今では結構ある。シンプルが好みなので、<code>Pickles</code>を使うことにした。</p>
+<p>今では結構選択肢が多い。シンプルが好みなので、<code>Pickles</code>を使うことにした。</p>
 <ul>
 <li><a href="https://themes.gohugo.io/hugo_theme_pickles/">Pickles</a></li>
 <li><a href="https://themes.gohugo.io/hugo-theme-cactus/">Cactus</a></li>
 </ul>
-<h1 id="deployでハマったところ">Deployでハマったところ</h1>
-<p>AWS, Firebaseなど色々用意されているが、GitHub Pagesが無料だし定番ぽい。</p>
-<p>参考:</p>
+<h1 id="deploy方法">Deploy方法</h1>
+<p>AWS, Firebaseなど色々用意されているが、次を参考にするとGitHub Pagesが無料だし定番ぽい。</p>
 <ol>
 <li><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">公式</a></li>
 <li><a href="https://www.membersedge.co.jp/blog/create-hugo-theme-and-deploy-to-github-pages/">Hugoで1からテーマを作ってGitHub Pagesにデプロイする</a></li>
 </ol>
-<p>参考を読んでいただけるとデプロイ方法は次の通りとわかったが、サクッと実装しようとしたらハマった。。</p>
+<p>参考を読むとデプロイ方法は次の通りとわかったが、サクッと実装できずハマった。。</p>
 <ol>
-<li>blog用のrepositoryの<code>master</code>からbranchを配信</li>
-<li>blog用のrepositoryの<code>gh-pages</code>branchを配信</li>
-<li>blog用のrepositoryの<code>/dir</code>を配信</li>
+<li>blog用のrepositoryの <code>master</code> branchから配信</li>
+<li>blog用のrepositoryの <code>gh-pages</code> branchから配信</li>
+<li>blog用のrepositoryの <code>master</code> branchの <code>/dir</code> から配信</li>
 </ol>
-<p>今回採用した1の方法について補足する。ちなみに選んだ理由はHugoの設定関連はprivate repositoryにして隠すことができること。あとまあ分かりやすい。</p>
-<p>例えば<code>sample123</code>さんのGITHUBアカウントだと、repositoryを二つ作る。</p>
+<p>今回採用した1の方法について補足する。選んだ理由はHugoの設定関連をprivate repositoryにして隠すことができること。あと分かりやすい。</p>
+<p>例えば <code>sample</code> さんのGITHUBアカウントだと、repositoryを二つ作る。</p>
 <ul>
-<li>Hugoの設定ファイルを管理するrepository: <code>e.g. sample123/blog</code></li>
-<li>GitHub Pages配信repository: <code>e.g. sample123/sample123.github.io</code></li>
+<li>Hugoの設定ファイルを管理するrepository <code>e.g. sample/blog</code></li>
+<li>GitHub Pages配信repository <code>e.g. sample/sample.github.io</code></li>
 </ul>
-<p>ポイントは<code>sample123/blog/</code>に生成される<code>/public</code>を、<code>sample123/sample123.github.io</code>のsubmoduleとすること。</p>
+<p>ポイントは <code>sample/blog/</code> に生成される <code>/public</code> を、<code>sample/sample.github.io</code> のsubmoduleとすること。</p>
 <p>こんな感じ。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"> <span style="color:#a6e22e">tree</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">L</span> <span style="color:#ae81ff">1</span>
-<span style="color:#a6e22e">sample123</span><span style="color:#f92672">/</span><span style="color:#a6e22e">blog</span> <span style="color:#75715e">// Hugo用のrepository
+<span style="color:#a6e22e">sample</span><span style="color:#f92672">/</span><span style="color:#a6e22e">blog</span> <span style="color:#75715e">// Hugo用のrepository
 </span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">Makefile</span>
 <span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">archetypes</span>
 <span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">toml</span>
 <span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">content</span>
 <span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">data</span>
 <span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">layouts</span>
-<span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">public</span> <span style="color:#75715e">// submoduleでsample123/sample123.github.ioのrepositoryを参照
+<span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">public</span> <span style="color:#75715e">// submoduleでsample/sample.github.ioのrepositoryを参照
 </span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">resources</span>
 <span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">static</span>
 <span style="color:#960050;background-color:#1e0010">└──</span> <span style="color:#a6e22e">themes</span>
-</code></pre></div><p>こうすることで<code>sample123/blog</code>ではgit remoteに<code>sample123/blog</code>を参照し、<code>sample123/blog/public</code>ではgit remoteに<code>sample123/sample123.github.io</code>を参照する仕組みができる。</p>
-<p>もっというと<code>.git/</code>が<code>sample123/blog</code>にもあるし、<code>sample123/blog/public/</code>にもあるということ。</p>
+</code></pre></div><p>こうすると <code>sample/blog</code> の有する <code>.git/</code> ではgit remoteに <code>sample/blog</code> を参照し、<code>sample/blog/public</code> の有する <code>.git</code> ではgit remoteに <code>sample/sample.github.io</code> を参照する仕組みができる。</p>
 <h1 id="運用について">運用について</h1>
 <p>整理すると必要な作業は３つありそう。</p>
 <ol>
-<li><code>/content</code>配下にblog記事を書く</li>
-<li>Hugoの設定関連を、<code>sample123/blog</code>にPush</li>
-<li><code>/public</code>の静的ファイルを、<code>sample123/sample123.github.io</code>にPush</li>
+<li><code>/content</code> 配下にblog記事を書く</li>
+<li>Hugoの設定関連を、<code>sample/blog</code> にPush</li>
+<li><code>/public</code> の静的ファイルを、<code>sample/sample.github.io</code> にPush</li>
 </ol>
-<p>最初の1は<code>$ hugo new dir/name.md</code>で対応する。
-Makefileを作成して、</p>
+<p>最初の1は <code>$ hugo new posts/example.md</code> で対応する。
+残りはMakefileを作成して、</p>
 <ul>
-<li>2は<code>$ make update</code>で<code>sample123/blog</code>にPush</li>
-<li>3は<code>$ make publish</code>で<code>sample123/sample123.github.io</code>にPush</li>
+<li>2は <code>$ make update</code> で <code>sample/blog</code> にPush</li>
+<li>3は <code>$ make publish</code> で <code>sample/sample.github.io</code> にPush</li>
 </ul>
-<p>3のポイントは<code>/public</code>が異なる<code>.git</code>を持ってるので、そのディレクトリで作業が必要なので<code>;</code>で<code>cd</code>した状態を維持していること。</p>
+<p>3のポイントは <code>/public</code> ディレクトリでの作業が必要なので<code>;</code>で<code>cd</code>した状態を維持すること。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">update:
 	@git add .
 	@git commit -m <span style="color:#e6db74">&#34;Update Settings&#34;</span>
@@ -150,13 +146,14 @@ publish:
 	@hugo
 	@cd public; git add .; git commit -m <span style="color:#e6db74">&#34;publish&#34;</span>; git push origin
 </code></pre></div><h1 id="github-pagesでthemeが読み込めない">GitHub PagesでThemeが読み込めない？</h1>
-<p><code>hugo serve</code>では、問題なくpicklesのthemeが適用されていたが、GitHub Pagesだと読み込んでくれなかった。</p>
-<p>原因は<code>config.toml</code>にて、<code>baseURL = &quot;http://sourjp.github.io/&quot;</code>となってること。GitHub Pagesではhttps対応なのにhttpにしたことで、Hugoが読み込む各種cssファイルなどのリンクはhttpになってしまい、エラーを返していた。</p>
-<p>なので、<code>baseURL = &quot;http://sourjp.github.io/&quot;</code>とすることで解決した。</p>
+<p><code>hugo serve</code> では、問題なくpicklesのthemeが適用されていたが、GitHub Pagesだと読み込んでくれなかった。</p>
+<p>原因は <code>config.toml</code> にて、<code>baseURL = &quot;http://sourjp.github.io/&quot;</code> となっていたこと。GitHub Pagesではhttps対応なのにhttpにしたことで、Hugoが読み込む各種cssファイルなどのリンクはhttpになってしまい、エラーを返していた。</p>
+<p>なので、<code>baseURL = &quot;http://sourjp.github.io/&quot;</code> とすることで解決した。</p>
 <h1 id="picklesでpageのリストが取得できない">Picklesでpageのリストが取得できない？</h1>
-<p><code>.md</code>ファイルを<code>content/posts/</code>以外におくと認識してくれないようでハマった。<code>pickles</code>の制限なのか、設定の制限なのか時間あるときに調べる。</p>
+<p><code>.md</code> ファイルを <code>content/posts/</code> 以外におくと認識してくれないようでハマった。<code>pickles</code> の制限なのか、設定の制限なのか時間あるときに調べる。</p>
 <h1 id="まとめ">まとめ</h1>
-<p>こんな感じで学んだことをblogとして書いていこうと思います。</p>
+<p>最初は手間取ったが環境ができたら快適。ちょっとこだわりをもつと大変そうだが、まずはシンプルに運用したい。</p>
+<p>こんな感じで学んだことをblogとして書いていこうと思う。</p>
 
   </section>
   <footer>

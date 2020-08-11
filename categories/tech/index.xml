@@ -18,18 +18,15 @@
       <pubDate>Tue, 11 Aug 2020 20:53:54 +0900</pubDate>
       
       <guid>https://sourjp.github.io/posts/hugo/</guid>
-      <description>Hugo始めた。
-今後のためにググっても見つからなかった部分をメモする。
-Hugoについて Golang製の静的サイトジェネレータ。高速。
-Theme選び 出始めは少なかったようだけど、今では結構ある。シンプルが好みなので、Picklesを使うことにした。
- Pickles Cactus  Deployでハマったところ AWS, Firebaseなど色々用意されているが、GitHub Pagesが無料だし定番ぽい。
-参考:
- 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考を読んでいただけるとデプロイ方法は次の通りとわかったが、サクッと実装しようとしたらハマった。。
- blog用のrepositoryのmasterからbranchを配信 blog用のrepositoryのgh-pagesbranchを配信 blog用のrepositoryの/dirを配信  今回採用した1の方法について補足する。ちなみに選んだ理由はHugoの設定関連はprivate repositoryにして隠すことができること。あとまあ分かりやすい。
-例えばsample123さんのGITHUBアカウントだと、repositoryを二つ作る。
- Hugoの設定ファイルを管理するrepository: e.g. sample123/blog GitHub Pages配信repository: e.g. sample123/sample123.github.io  ポイントはsample123/blog/に生成される/publicを、sample123/sample123.github.ioのsubmoduleとすること。
+      <description>Hugoについて Golang製の静的サイトジェネレータ。高速。
+Theme選び 今では結構選択肢が多い。シンプルが好みなので、Picklesを使うことにした。
+ Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されているが、次を参考にするとGitHub Pagesが無料だし定番ぽい。
+ 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考を読むとデプロイ方法は次の通りとわかったが、サクッと実装できずハマった。。
+ blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  今回採用した1の方法について補足する。選んだ理由はHugoの設定関連をprivate repositoryにして隠すことができること。あと分かりやすい。
+例えば sample さんのGITHUBアカウントだと、repositoryを二つ作る。
+ Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすること。
 こんな感じ。
-tree -L 1 sample123/blog // Hugo用のrepository ├── Makefile ├── archetypes ├── config.toml ├── content ├── data ├── layouts ├── public // submoduleでsample123/sample123.github.ioのrepositoryを参照 ├── resources ├── static └── themes こうすることでsample123/blogではgit remoteにsample123/blogを参照し、sample123/blog/publicではgit remoteにsample123/sample123.</description>
+tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── archetypes ├── config.toml ├── content ├── data ├── layouts ├── public // submoduleでsample/sample.</description>
     </item>
     
   </channel>
