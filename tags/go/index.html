@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Categories</title>
-  <meta property="og:title" content="Categories" />
-  <meta name="twitter:title" content="Categories" />
+  <title>go</title>
+  <meta property="og:title" content="go" />
+  <meta name="twitter:title" content="go" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="sourjp"/>
   <meta property="og:site_name" content="note." />
-  <meta property="og:url" content="https://sourjp.github.io/categories/" />
+  <meta property="og:url" content="https://sourjp.github.io/tags/go/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -60,16 +60,66 @@
 
   <main id="main" class="l-main">
 
+<h2 class="c-title p-tag-title">go</h2>
 
-<section>
-  <h2>Categories</h2>
-  <ul>
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/gosec/">gosec</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-12T22:18:08&#43;09:00">
+  Aug 12, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    securego/gosecなるものを教えてもらった。 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。
+どんな内容をチェックしてくれる？ Available rulesがその一覧。
+もう少し細かいところは公式サイトにありますが、更新はされてなさそうですね。 GitHubは月に5-10回ぐらいcommitされているので活発そうです。
+Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojectで採番している番号で、その元はCWEのようです。
+対応表を見ると、例えば G102 は CWE-200 にマッチしていて、CWE-22: Improper Limitation of a Pathname to a Restricted Directory (&lsquo;Path Traversal&rsquo;)とアクセスすれば良さそうです。
+// GetCwe creates a cwe object for a given RuleID func GetCwe(id string) Cwe { return Cwe{ID: id, URL: fmt.Sprintf(&#34;https://cwe.mitre.org/data/definitions/%s.html&#34;, id)} } // IssueToCWE maps gosec rules to CWEs var IssueToCWE = map[string]Cwe{ &#34;G101&#34;: GetCwe(&#34;798&#34;), &#34;G102&#34;: GetCwe(&#34;200&#34;), ---snip--- } 誰が使ってるの？ リストがありました。 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/gosec/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+<nav class="c-pagination p-pagination">
+  <div class="c-pagination__ctrl">
+    <div class="c-pagination__newer">
+      
+    </div>
+    <div class="c-pagination__older">
+      
+    </div>
+  </div>
+  <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
+</nav>
+
+
+<aside class="p-author">
+  
+  
+  <div class="p-author__body">
+    
+    <p class="c-title p-author__name ">sourjp</p>
     
     
-    <li><a href="https://sourjp.github.io/categories/tech">tech</a> (2)</li>
+    <p>元ネットワークエンジニア。バックエンドに興味津々。最近はGoとPython触りたい。ご連絡はTwitterでDMください。</p>
     
-  </ul>
-</section>
+    
+  </div>
+  
+</aside>
+
+
   </main>
   
 <nav class="l-nav p-menu">

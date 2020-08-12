@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tech on note.</title>
-    <link>https://sourjp.github.io/categories/tech/</link>
-    <description>Recent content in tech on note.</description>
+    <title>go on note.</title>
+    <link>https://sourjp.github.io/tags/go/</link>
+    <description>Recent content in go on note.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; sourjp</copyright>
     <lastBuildDate>Wed, 12 Aug 2020 22:18:08 +0900</lastBuildDate>
     
-	<atom:link href="https://sourjp.github.io/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sourjp.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -24,23 +24,6 @@
 Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojectで採番している番号で、その元はCWEのようです。
 対応表を見ると、例えば G102 は CWE-200 にマッチしていて、CWE-22: Improper Limitation of a Pathname to a Restricted Directory (&amp;lsquo;Path Traversal&amp;rsquo;)とアクセスすれば良さそうです。
 // GetCwe creates a cwe object for a given RuleID func GetCwe(id string) Cwe { return Cwe{ID: id, URL: fmt.Sprintf(&amp;#34;https://cwe.mitre.org/data/definitions/%s.html&amp;#34;, id)} } // IssueToCWE maps gosec rules to CWEs var IssueToCWE = map[string]Cwe{ &amp;#34;G101&amp;#34;: GetCwe(&amp;#34;798&amp;#34;), &amp;#34;G102&amp;#34;: GetCwe(&amp;#34;200&amp;#34;), ---snip--- } 誰が使ってるの？ リストがありました。 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。</description>
-    </item>
-    
-    <item>
-      <title>Hugo始めました</title>
-      <link>https://sourjp.github.io/posts/hugo/</link>
-      <pubDate>Tue, 11 Aug 2020 20:53:54 +0900</pubDate>
-      
-      <guid>https://sourjp.github.io/posts/hugo/</guid>
-      <description>Hugoについて Golang製の静的サイトジェネレータ。高速。
-Theme選び 今では結構選択肢が多い。シンプルが好みなので、Picklesを使うことにした。
- Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されているが、次を参考にするとGitHub Pagesが無料だし定番ぽい。
- 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考を読むとデプロイ方法は次の通りとわかったが、サクッと実装できずハマった。。
- blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  今回採用した1の方法について補足する。選んだ理由はHugoの設定関連をprivate repositoryにして隠すことができること。あと分かりやすい。
-例えば sample さんのGITHUBアカウントだと、repositoryを二つ作る。
- Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすること。
-こんな感じ。
-tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── archetypes ├── config.toml ├── content ├── data ├── layouts ├── public // submoduleでsample/sample.</description>
     </item>
     
   </channel>
