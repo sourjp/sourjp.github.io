@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>tech</title>
-  <meta property="og:title" content="tech" />
-  <meta name="twitter:title" content="tech" />
+  <title>devops</title>
+  <meta property="og:title" content="devops" />
+  <meta name="twitter:title" content="devops" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="sourjp"/>
   <meta property="og:site_name" content="note." />
-  <meta property="og:url" content="https://sourjp.github.io/categories/tech/" />
+  <meta property="og:url" content="https://sourjp.github.io/tags/devops/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -71,32 +71,7 @@ if (!doNotTrack) {
 
   <main id="main" class="l-main">
 
-<h2 class="c-title p-tag-title">tech</h2>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-cmd/">Go Command Line Tool Packages</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-14T09:42:40&#43;09:00">
-  Aug 14, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Go言語でコマンドラインツールを作ろうと思いましたが、サブコマンドが必要になりそうだったので調べました。 書きやすいものを探したいので次のコマンドを作るという前提で比較していきます。
- ./cmd foo -name=foo args ./cmd bar -name=bar args  対象は標準パッケージと、みんなのGo言語にピックアップされている3rd packageも試してみます。
-flag (標準) 大変わかりやすかったので、Go by Example: Command-Line Subcommandsをベースに簡略化して考えたいと思います。
-package main import ( &#34;flag&#34; &#34;fmt&#34; &#34;os&#34; ) func main() { fooCmd := flag.NewFlagSet(&#34;foo&#34;, flag.ExitOnError) fooName := fooCmd.String(&#34;name&#34;, &#34;&#34;, &#34;name&#34;) barCmd := flag.NewFlagSet(&#34;bar&#34;, flag.ExitOnError) barName := barCmd.String(&#34;name&#34;, 0, &#34;name&#34;) if len(os.Args) &lt; 2 { fmt.Println(&#34;expected &#39;foo&#39; or &#39;bar&#39; subcommands&#34;) os.Exit(1) } switch os.Args[1] { case &#34;foo&#34;: fooCmd.Parse(os.Args[2:]) fmt.Println(&#34;subcommand &#39;foo&#39;&#34;) fmt.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/go-cmd/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
+<h2 class="c-title p-tag-title">devops</h2>
 
 
 
@@ -115,63 +90,6 @@ package main import ( &#34;flag&#34; &#34;fmt&#34; &#34;os&#34; ) func main() { 
   <div class="c-article__summary">
     Qiita: ArgoCDをArgoCDで管理 + Kustomizeに書いた。
   </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/gosec/">gosec</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-12T22:18:08&#43;09:00">
-  Aug 12, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    securego/gosecなるものを教えてもらった。 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。
-どんな内容をチェックしてくれる？ Available rulesがその一覧。
-もう少し細かいところは公式サイトにありますが、更新はされてなさそうですね。 GitHubは月に5-10回ぐらいcommitされているので活発そうです。
-Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojectで採番している番号で、その元はCWEのようです。
-対応表を見ると、例えば G102 は CWE-200 にマッチしていて、CWE-22: Improper Limitation of a Pathname to a Restricted Directory (&lsquo;Path Traversal&rsquo;)とアクセスすれば良さそうです。
-// GetCwe creates a cwe object for a given RuleID func GetCwe(id string) Cwe { return Cwe{ID: id, URL: fmt.Sprintf(&#34;https://cwe.mitre.org/data/definitions/%s.html&#34;, id)} } // IssueToCWE maps gosec rules to CWEs var IssueToCWE = map[string]Cwe{ &#34;G101&#34;: GetCwe(&#34;798&#34;), &#34;G102&#34;: GetCwe(&#34;200&#34;), ---snip--- } 誰が使ってるの？ リストがありました。 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/gosec/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/hugo/">Hugo始めました</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-11T20:53:54&#43;09:00">
-  Aug 11, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Hugoについて Golang製の静的サイトジェネレータ。高速。
-Theme選び 今では結構選択肢が多い。シンプルが好みなので、Picklesを使うことにした。
- Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されているが、次を参考にするとGitHub Pagesが無料だし定番ぽい。
- 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考を読むとデプロイ方法は次の通りとわかったが、サクッと実装できずハマった。。
- blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  今回採用した1の方法について補足する。選んだ理由はHugoの設定関連をprivate repositoryにして隠すことができること。あと分かりやすい。
-例えば sample さんのGITHUBアカウントだと、repositoryを二つ作る。
- Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすること。
-こんな感じ。
-tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── archetypes ├── config.toml ├── content ├── data ├── layouts ├── public // submoduleでsample/sample.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/hugo/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 

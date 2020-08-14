@@ -7,10 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; sourjp</copyright>
-    <lastBuildDate>Wed, 12 Aug 2020 22:18:08 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2020 09:42:40 +0900</lastBuildDate>
     
 	<atom:link href="https://sourjp.github.io/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go Command Line Tool Packages</title>
+      <link>https://sourjp.github.io/posts/go-cmd/</link>
+      <pubDate>Fri, 14 Aug 2020 09:42:40 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/posts/go-cmd/</guid>
+      <description>Go言語でコマンドラインツールを作ろうと思いましたが、サブコマンドが必要になりそうだったので調べました。 書きやすいものを探したいので次のコマンドを作るという前提で比較していきます。
+ ./cmd foo -name=foo args ./cmd bar -name=bar args  対象は標準パッケージと、みんなのGo言語にピックアップされている3rd packageも試してみます。
+flag (標準) 大変わかりやすかったので、Go by Example: Command-Line Subcommandsをベースに簡略化して考えたいと思います。
+package main import ( &amp;#34;flag&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;os&amp;#34; ) func main() { fooCmd := flag.NewFlagSet(&amp;#34;foo&amp;#34;, flag.ExitOnError) fooName := fooCmd.String(&amp;#34;name&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;name&amp;#34;) barCmd := flag.NewFlagSet(&amp;#34;bar&amp;#34;, flag.ExitOnError) barName := barCmd.String(&amp;#34;name&amp;#34;, 0, &amp;#34;name&amp;#34;) if len(os.Args) &amp;lt; 2 { fmt.Println(&amp;#34;expected &amp;#39;foo&amp;#39; or &amp;#39;bar&amp;#39; subcommands&amp;#34;) os.Exit(1) } switch os.Args[1] { case &amp;#34;foo&amp;#34;: fooCmd.Parse(os.Args[2:]) fmt.Println(&amp;#34;subcommand &amp;#39;foo&amp;#39;&amp;#34;) fmt.</description>
+    </item>
+    
+    <item>
+      <title>ArgoCDをArgoCDで管理 &#43; Kustomize</title>
+      <link>https://sourjp.github.io/posts/argo/</link>
+      <pubDate>Thu, 13 Aug 2020 14:47:59 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/posts/argo/</guid>
+      <description>Qiita: ArgoCDをArgoCDで管理 + Kustomizeに書いた。</description>
+    </item>
     
     <item>
       <title>gosec</title>
