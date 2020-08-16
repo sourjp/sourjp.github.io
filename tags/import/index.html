@@ -88,14 +88,14 @@ if (!doNotTrack) {
     </p>
   </header>
   <div class="c-article__summary">
-    packageのexampleで import _ &quot;hogehoge&quot; と記載がある。ただ _ は捨てる変数定義になってしまうのに、どういう効果があるんだろうと気になったので調べた。
+    import _ &quot;hogehoge&quot; の _ は、どういう意味があるんだろうと気になったので調べました。
 init()の実行が理由 packageの中身を利用しないが、init()関数が必要な場合に利用するようです。 なので次のように動作を試してみました。
 main.go
 package main import ( &#34;fmt&#34; _ &#34;github.com/sourjp/practice/hello&#34; ) func main() { fmt.Println(&#34;Hi&#34;) } hello/hello.go
 package hello import &#34;fmt&#34; func init() { fmt.Println(&#34;hello&#34;) } 実行してみるとpackage helloを使わないが、中に定義されているinit()が実行されていることがわかります。
 $ go run main.go hello Hi 次に実際のpackageでの使われ方をみていきます。
 package imageの場合 package imageでは、Decode()を行うのにRegistration()で拡張子を登録する必要があります。
- Values of the Image interface are created either by calling functions such as NewRGBA and NewPaletted, or by calling Decode on an io.
+ Values of the Image interface are created either by calling functions such as NewRGBA and NewPaletted, or by calling Decode on an io.Reader containing image data in a format such as GIF, JPEG or PNG.
   </div>
   
   <a href="https://sourjp.github.io/posts/go-import/" class="c-article__btn p-list-article__btn">Read more</a>
