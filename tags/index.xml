@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; sourjp</copyright>
-    <lastBuildDate>Fri, 14 Aug 2020 09:42:40 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 Aug 2020 12:59:43 +0900</lastBuildDate>
     
 	<atom:link href="https://sourjp.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go</title>
+      <link>https://sourjp.github.io/tags/go/</link>
+      <pubDate>Sun, 16 Aug 2020 12:59:43 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>import</title>
+      <link>https://sourjp.github.io/tags/import/</link>
+      <pubDate>Sun, 16 Aug 2020 12:59:43 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/tags/import/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>cmd</title>
@@ -18,15 +36,6 @@
       <pubDate>Fri, 14 Aug 2020 09:42:40 +0900</pubDate>
       
       <guid>https://sourjp.github.io/tags/cmd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://sourjp.github.io/tags/go/</link>
-      <pubDate>Fri, 14 Aug 2020 09:42:40 +0900</pubDate>
-      
-      <guid>https://sourjp.github.io/tags/go/</guid>
       <description></description>
     </item>
     

@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Tags</title>
-  <meta property="og:title" content="Tags" />
-  <meta name="twitter:title" content="Tags" />
+  <title>import</title>
+  <meta property="og:title" content="import" />
+  <meta name="twitter:title" content="import" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="sourjp"/>
   <meta property="og:site_name" content="note." />
-  <meta property="og:url" content="https://sourjp.github.io/tags/" />
+  <meta property="og:url" content="https://sourjp.github.io/tags/import/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -71,26 +71,68 @@ if (!doNotTrack) {
 
   <main id="main" class="l-main">
 
+<h2 class="c-title p-tag-title">import</h2>
 
-<section>
-  <h2>Tags</h2>
-  <ul>
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-import/">Go import _</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-16T12:59:43&#43;09:00">
+  Aug 16, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    packageのexampleで import _ &quot;hogehoge&quot; と記載がある。ただ _ は捨てる変数定義になってしまうのに、どういう効果があるんだろうと気になったので調べた。
+init()の実行が理由 packageの中身を利用しないが、init()関数が必要な場合に利用するようです。 なので次のように動作を試してみました。
+main.go
+package main import ( &#34;fmt&#34; _ &#34;github.com/sourjp/practice/hello&#34; ) func main() { fmt.Println(&#34;Hi&#34;) } hello/hello.go
+package hello import &#34;fmt&#34; func init() { fmt.Println(&#34;hello&#34;) } 実行してみるとpackage helloを使わないが、中に定義されているinit()が実行されていることがわかります。
+$ go run main.go hello Hi 次に実際のpackageでの使われ方をみていきます。
+package imageの場合 package imageでは、Decode()を行うのにRegistration()で拡張子を登録する必要があります。
+ Values of the Image interface are created either by calling functions such as NewRGBA and NewPaletted, or by calling Decode on an io.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-import/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+<nav class="c-pagination p-pagination">
+  <div class="c-pagination__ctrl">
+    <div class="c-pagination__newer">
+      
+    </div>
+    <div class="c-pagination__older">
+      
+    </div>
+  </div>
+  <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
+</nav>
+
+
+<aside class="p-author">
+  
+  
+  <div class="p-author__body">
+    
+    <p class="c-title p-author__name ">sourjp</p>
     
     
-    <li><a href="https://sourjp.github.io/tags/cmd">cmd</a> (1)</li>
+    <p>元ネットワークエンジニア。バックエンドに興味津々。最近はGoとPython触りたい。ご連絡はTwitterでDMください。</p>
     
-    <li><a href="https://sourjp.github.io/tags/devops">devops</a> (1)</li>
     
-    <li><a href="https://sourjp.github.io/tags/go">go</a> (3)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/hugo">hugo</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/import">import</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/qiita">qiita</a> (1)</li>
-    
-  </ul>
-</section>
+  </div>
+  
+</aside>
+
+
   </main>
   
 <nav class="l-nav p-menu">
