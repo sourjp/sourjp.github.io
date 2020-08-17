@@ -126,9 +126,7 @@ exit <span style="color:#ae81ff">0</span>
 *
 04:21
 break
-</code></pre></div><p>バッチリですね。
-では02:00~04:00の間はどうしましょうか？stringですと比較演算子が使えません。</p>
-<p>答えは正規表現です。</p>
+</code></pre></div><p>バッチリですね。02:00~04:00の間などの条件を使いたいときは正規表現です。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">while</span> :; <span style="color:#66d9ef">do</span>
     currenttime<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date +%H:%M<span style="color:#66d9ef">)</span>

@@ -23,7 +23,8 @@
 integer で比較など色々試行錯誤しましたが、stackoverflowのHow to check if the current time is between 23:00 and 06:30に素晴らしいアイデアがありました。
 結論はdateをstringで取り出して、caseで判定を行います。
 #!/bin/bash while :; do currenttime=$(date +%H:%M) echo $currenttime case &amp;#34;$currenttime&amp;#34; in (04:21) # 04:21にbreakしてscriptを終了 echo &amp;#34;break&amp;#34; break ;; (*) echo &amp;#34;*&amp;#34; ;; esac sleep 5s done exit 0 動作させた結果がこちらです。
-$ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。 では02:00~04:00の間はどうしましょうか？stringですと比較演算子が使えません。</description>
+$ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。02:00~04:00の間などの条件を使いたいときは正規表現です。
+#!/bin/bash while :; do currenttime=$(date +%H:%M) echo $currenttime case &amp;#34;$currenttime&amp;#34; in (0[2-4]:*) echo &amp;#34;break&amp;#34; break ;; (*) echo &amp;#34;*&amp;#34; ;; esac sleep 5s done exit 0 簡単なことですが知っとくと便利なことでした。</description>
     </item>
     
   </channel>
