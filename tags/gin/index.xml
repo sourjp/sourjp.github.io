@@ -13,15 +13,17 @@
     
     
     <item>
-      <title>Go Gin package</title>
+      <title>Go Gin packageの基本を触る</title>
       <link>https://sourjp.github.io/posts/go-gin/</link>
       <pubDate>Sun, 16 Aug 2020 16:45:31 +0900</pubDate>
       
       <guid>https://sourjp.github.io/posts/go-gin/</guid>
-      <description>gin-gonic/ginが圧倒的な人気を誇っているので、README.mdにある一通りの機能でWebAPI(JSON format)の想定で関わりそうな機能を試していきます。
+      <description>バックエンドエンジニアへの転職を希望しています。最新の技術を学びたく、外部勉強会をはじめとして、クラウドサービスやKubernetesと知識をつけていった結果、Webアプリケーション開発に魅力を強く感じたことがきっかけです。
+職務経歴 請負業務を経験してきたため、自社開発のWebアプリケーションサービスに関わりたいです。
+gin-gonic/ginが圧倒的な人気を誇っているので、README.mdにある一通りの機能でWebAPI(JSON format)の想定で関わりそうな機能を試していきます。
 記載してあるコードはREADME.mdにあるコードを抜粋したり、改変したりして記載しています。
 QuickStart とりあえずQuickStartのコードを試してみる。
-package main import &amp;#34;github.com/gin-gonic/gin&amp;#34; func main() { r := gin.Default() r.GET(&amp;#34;/ping&amp;#34;, func(c *gin.Context) { c.JSON(200, gin.H{ &amp;#34;message&amp;#34;: &amp;#34;pong&amp;#34;, }) }) r.Run() } $ curl localhost:8080/ping {&amp;#34;message&amp;#34;:&amp;#34;pong&amp;#34;} $ go run main.go [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. [GIN-debug] [WARNING] Running in &amp;#34;debug&amp;#34; mode. Switch to &amp;#34;release&amp;#34; mode in production. - using env: export GIN_MODE=release - using code: gin.SetMode(gin.ReleaseMode) [GIN-debug] GET /ping --&amp;gt; main.</description>
+package main import &amp;#34;github.com/gin-gonic/gin&amp;#34; func main() { r := gin.Default() r.GET(&amp;#34;/ping&amp;#34;, func(c *gin.Context) { c.JSON(200, gin.H{ &amp;#34;message&amp;#34;: &amp;#34;pong&amp;#34;, }) }) r.Run() } $ curl localhost:8080/ping {&amp;#34;message&amp;#34;:&amp;#34;pong&amp;#34;} $ go run main.go [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. [GIN-debug] [WARNING] Running in &amp;#34;debug&amp;#34; mode. Switch to &amp;#34;release&amp;#34; mode in production. - using env: export GIN_MODE=release - using code: gin.</description>
     </item>
     
   </channel>
