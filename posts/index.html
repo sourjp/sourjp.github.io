@@ -78,6 +78,33 @@ if (!doNotTrack) {
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/shell-timer/">sidecarのshell scriptで時間をトリガーにする</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-17T13:12:32&#43;09:00">
+  Aug 17, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    shell scriptを時間指定で実行したいときに cronjob や at など方法があると思います。
+ただKubernetes環境で実行したいときはどうでしょうか？ shell scriptを実行するだけなら cronjob リソースを使えば良いのですが、今回は対象アプリのsidecarとして載せる必要がありました。この場合は Deployment リソースなので、shell scriptに時間トリガーを仕込む必要がありました。
+integer で比較など色々試行錯誤しましたが、stackoverflowのHow to check if the current time is between 23:00 and 06:30に素晴らしいアイデアがありました。
+結論はdateをstringで取り出して、caseで判定を行います。
+#!/bin/bash while :; do currenttime=$(date +%H:%M) echo $currenttime case &#34;$currenttime&#34; in (04:21) # 04:21にbreakしてscriptを終了 echo &#34;break&#34; break ;; (*) echo &#34;*&#34; ;; esac sleep 5s done exit 0 動作させた結果がこちらです。
+$ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。 では02:00~04:00の間はどうしましょうか？stringですと比較演算子が使えません。
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/shell-timer/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-gin/">Go Gin packageの基本を触る</a></h2>
     <p class="c-article__meta">
       Posted on

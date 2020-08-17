@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>note.</title>
-  <meta property="og:title" content="note." />
-  <meta name="twitter:title" content="note." />
+  <title>k8s</title>
+  <meta property="og:title" content="k8s" />
+  <meta name="twitter:title" content="k8s" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="sourjp"/>
   <meta property="og:site_name" content="note." />
-  <meta property="og:url" content="https://sourjp.github.io/" />
+  <meta property="og:url" content="https://sourjp.github.io/tags/k8s/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -49,8 +49,6 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="https://sourjp.github.io/css/style.css" />
   
   
-  <link href="https://sourjp.github.io/index.xml" rel="alternate" type="application/rss+xml" title="note." />
-  
   
   <script type="text/javascript" src="https://sourjp.github.io/js/bundle.js"></script>
   
@@ -73,10 +71,12 @@ if (!doNotTrack) {
 
   <main id="main" class="l-main">
 
+<h2 class="c-title p-tag-title">k8s</h2>
 
 
-  
-  <article class="c-article p-list-article">
+
+
+<article class="c-article p-list-article">
   <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/shell-timer/">sidecarのshell scriptで時間をトリガーにする</a></h2>
     <p class="c-article__meta">
@@ -101,164 +101,6 @@ $ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。 で�
 </article>
 
 
-  
-    
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-gin/">Go Gin packageの基本を触る</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-16T16:45:31&#43;09:00">
-  Aug 16, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    バックエンドエンジニアへの転職を希望しています。最新の技術を学びたく、外部勉強会をはじめとして、クラウドサービスやKubernetesと知識をつけていった結果、Webアプリケーション開発に魅力を強く感じたことがきっかけです。
-職務経歴 請負業務を経験してきたため、自社開発のWebアプリケーションサービスに関わりたいです。
-gin-gonic/ginが圧倒的な人気を誇っているので、README.mdにある一通りの機能でWebAPI(JSON format)の想定で関わりそうな機能を試していきます。
-記載してあるコードはREADME.mdにあるコードを抜粋したり、改変したりして記載しています。
-QuickStart とりあえずQuickStartのコードを試してみる。
-package main import &#34;github.com/gin-gonic/gin&#34; func main() { r := gin.Default() r.GET(&#34;/ping&#34;, func(c *gin.Context) { c.JSON(200, gin.H{ &#34;message&#34;: &#34;pong&#34;, }) }) r.Run() } $ curl localhost:8080/ping {&#34;message&#34;:&#34;pong&#34;} $ go run main.go [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. [GIN-debug] [WARNING] Running in &#34;debug&#34; mode. Switch to &#34;release&#34; mode in production. - using env: export GIN_MODE=release - using code: gin.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/go-gin/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-  
-    
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-import/">Go import _ ってなんだ</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-16T12:59:43&#43;09:00">
-  Aug 16, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    import _ &quot;hogehoge&quot; の _ は、どういう意味があるんだろうと気になったので調べました。
-init()の実行が理由 packageの中身を利用しないが、init()関数が必要な場合に利用するようです。 なので次のように動作を試してみました。
-main.go
-package main import ( &#34;fmt&#34; _ &#34;github.com/sourjp/practice/hello&#34; ) func main() { fmt.Println(&#34;Hi&#34;) } hello/hello.go
-package hello import &#34;fmt&#34; func init() { fmt.Println(&#34;hello&#34;) } 実行してみるとpackage helloを使わないが、中に定義されているinit()が実行されていることがわかります。
-$ go run main.go hello Hi 次に実際のpackageでの使われ方をみていきます。
-package imageの場合 package imageでは、Decode()を行うのにRegistration()で拡張子を登録する必要があります。
- Values of the Image interface are created either by calling functions such as NewRGBA and NewPaletted, or by calling Decode on an io.Reader containing image data in a format such as GIF, JPEG or PNG.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/go-import/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-  
-    
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-cmd/">Go Command Line Tool Packagesをざっと試す</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-14T09:42:40&#43;09:00">
-  Aug 14, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Go言語でコマンドラインツールを作ろうと思いましたが、サブコマンドが必要になりそうだったので調べました。 書きやすいものを探したいので次のコマンドを作るという前提で比較していきます。
- ./cmd foo -name=foo args ./cmd bar -name=bar args  対象は標準パッケージと、みんなのGo言語にピックアップされている3rd packageも試してみます。
-flag (標準) 大変わかりやすかったので、Go by Example: Command-Line Subcommandsをベースに簡略化して考えたいと思います。
-package main import ( &#34;flag&#34; &#34;fmt&#34; &#34;os&#34; ) func main() { fooCmd := flag.NewFlagSet(&#34;foo&#34;, flag.ExitOnError) fooName := fooCmd.String(&#34;name&#34;, &#34;&#34;, &#34;name&#34;) barCmd := flag.NewFlagSet(&#34;bar&#34;, flag.ExitOnError) barName := barCmd.String(&#34;name&#34;, 0, &#34;name&#34;) if len(os.Args) &lt; 2 { fmt.Println(&#34;expected &#39;foo&#39; or &#39;bar&#39; subcommands&#34;) os.Exit(1) } switch os.Args[1] { case &#34;foo&#34;: fooCmd.Parse(os.Args[2:]) fmt.Println(&#34;subcommand &#39;foo&#39;&#34;) fmt.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/go-cmd/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-  
-    
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/argo/">ArgoCDをArgoCDで管理 &#43; Kustomize</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-13T14:47:59&#43;09:00">
-  Aug 13, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Qiita: ArgoCDをArgoCDで管理 + Kustomizeに書いた。
-  </div>
-  
-</article>
-
-
-  
-    
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/gosec/">gosecいいね</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-12T22:18:08&#43;09:00">
-  Aug 12, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    securego/gosecなるものを教えてもらった。 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。
-どんな内容をチェックしてくれる？ Available rulesがその一覧。
-もう少し細かいところは公式サイトにありますが、更新はされてなさそうですね。 GitHubは月に5-10回ぐらいcommitされているので活発そうです。
-Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojectで採番している番号で、その元はCWEのようです。
-対応表を見ると、例えば G102 は CWE-200 にマッチしていて、CWE-22: Improper Limitation of a Pathname to a Restricted Directory (&lsquo;Path Traversal&rsquo;)とアクセスすれば良さそうです。
-// GetCwe creates a cwe object for a given RuleID func GetCwe(id string) Cwe { return Cwe{ID: id, URL: fmt.Sprintf(&#34;https://cwe.mitre.org/data/definitions/%s.html&#34;, id)} } // IssueToCWE maps gosec rules to CWEs var IssueToCWE = map[string]Cwe{ &#34;G101&#34;: GetCwe(&#34;798&#34;), &#34;G102&#34;: GetCwe(&#34;200&#34;), ---snip--- } 誰が使ってるの？ リストがありました。 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/gosec/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-  
-    
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/hugo/">Hugo始めました</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-11T20:53:54&#43;09:00">
-  Aug 11, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Hugoについて Golang製の静的サイトジェネレータ。高速。
-Theme選び 今では結構選択肢が多い。シンプルが好みなので、Picklesを使うことにした。
- Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されているが、次を参考にするとGitHub Pagesが無料だし定番ぽい。
- 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考を読むとデプロイ方法は次の通りとわかったが、サクッと実装できずハマった。。
- blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  今回採用した1の方法について補足する。選んだ理由はHugoの設定関連をprivate repositoryにして隠すことができること。あと分かりやすい。
-例えば sample さんのGITHUBアカウントだと、repositoryを二つ作る。
- Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすること。
-こんな感じ。
-tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── archetypes ├── config.toml ├── content ├── data ├── layouts ├── public // submoduleでsample/sample.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/hugo/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
 
 <nav class="c-pagination p-pagination">
   <div class="c-pagination__ctrl">
@@ -271,7 +113,8 @@ tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── arche
   </div>
   <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
 </nav>
- 
+
+
 <aside class="p-author">
   
   

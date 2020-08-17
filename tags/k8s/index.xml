@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>k8s on note.</title>
+    <link>https://sourjp.github.io/tags/k8s/</link>
+    <description>Recent content in k8s on note.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <copyright>&amp;copy; sourjp</copyright>
+    <lastBuildDate>Mon, 17 Aug 2020 13:12:32 +0900</lastBuildDate>
+    
+	<atom:link href="https://sourjp.github.io/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sidecarのshell scriptで時間をトリガーにする</title>
+      <link>https://sourjp.github.io/posts/shell-timer/</link>
+      <pubDate>Mon, 17 Aug 2020 13:12:32 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/posts/shell-timer/</guid>
+      <description>shell scriptを時間指定で実行したいときに cronjob や at など方法があると思います。
+ただKubernetes環境で実行したいときはどうでしょうか？ shell scriptを実行するだけなら cronjob リソースを使えば良いのですが、今回は対象アプリのsidecarとして載せる必要がありました。この場合は Deployment リソースなので、shell scriptに時間トリガーを仕込む必要がありました。
+integer で比較など色々試行錯誤しましたが、stackoverflowのHow to check if the current time is between 23:00 and 06:30に素晴らしいアイデアがありました。
+結論はdateをstringで取り出して、caseで判定を行います。
+#!/bin/bash while :; do currenttime=$(date +%H:%M) echo $currenttime case &amp;#34;$currenttime&amp;#34; in (04:21) # 04:21にbreakしてscriptを終了 echo &amp;#34;break&amp;#34; break ;; (*) echo &amp;#34;*&amp;#34; ;; esac sleep 5s done exit 0 動作させた結果がこちらです。
+$ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。 では02:00~04:00の間はどうしましょうか？stringですと比較演算子が使えません。</description>
+    </item>
+    
+  </channel>
+</rss>
