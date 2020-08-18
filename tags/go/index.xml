@@ -7,10 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; sourjp</copyright>
-    <lastBuildDate>Sun, 16 Aug 2020 16:45:31 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2020 22:02:45 +0900</lastBuildDate>
     
 	<atom:link href="https://sourjp.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go datanbase/sql の操作ガイドあったんかい</title>
+      <link>https://sourjp.github.io/posts/go-db/</link>
+      <pubDate>Mon, 17 Aug 2020 22:02:45 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/posts/go-db/</guid>
+      <description>database/sqlを触ってますが、いまいちしっかり説明してくれるリソースがないなあと思ってたら、goのwikiにGo database/sql tutorialがあった！
+ということで試しながらポイントを整理してきます。
+Overview  DBへのアクセスには sql.DB を利用 sql.DB　は指定したDriverへアクセスを抽象化した存在 これによってDriverがPostgresでも、MySQLでも統一した操作を提供  Importing a Database Driver  利用には database/sql とDriverパッケージの二つが必要 一般的にDriverパッケージは依存するため使わない database/sql を介してアクセス Dirver自体は次のようにすることでDriverとして登録(Go import _ ってなんだみてね)  import ( &amp;#34;database/sql&amp;#34; _ &amp;#34;github.com/lib/pq&amp;#34; ) wikiではmysqlですが、今回はpostgres driverを使います
+Accessing the Database  sql.Open()により取得したobjectでDBを操作可能  第一引数はdriverの名前で、第二引数はパラメーター(PGの場合はココ)を渡します
+テストとしてDBが必要なのでDockerのpostgres利用することにして、簡単にMakefileを用意します
+$ docker run --name go-pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -e POSTGRES_DB=test -p 5432:5432 -d postgres:12.4
+init-db: @docker run --name go-pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -e POSTGRES_DB=test -p 5432:5432 -d postgres:12.</description>
+    </item>
     
     <item>
       <title>Go Gin packageの基本を触る</title>

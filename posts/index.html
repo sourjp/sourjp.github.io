@@ -78,6 +78,34 @@ if (!doNotTrack) {
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-db/">Go datanbase/sql の操作ガイドあったんかい</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-17T22:02:45&#43;09:00">
+  Aug 17, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    database/sqlを触ってますが、いまいちしっかり説明してくれるリソースがないなあと思ってたら、goのwikiにGo database/sql tutorialがあった！
+ということで試しながらポイントを整理してきます。
+Overview  DBへのアクセスには sql.DB を利用 sql.DB　は指定したDriverへアクセスを抽象化した存在 これによってDriverがPostgresでも、MySQLでも統一した操作を提供  Importing a Database Driver  利用には database/sql とDriverパッケージの二つが必要 一般的にDriverパッケージは依存するため使わない database/sql を介してアクセス Dirver自体は次のようにすることでDriverとして登録(Go import _ ってなんだみてね)  import ( &#34;database/sql&#34; _ &#34;github.com/lib/pq&#34; ) wikiではmysqlですが、今回はpostgres driverを使います
+Accessing the Database  sql.Open()により取得したobjectでDBを操作可能  第一引数はdriverの名前で、第二引数はパラメーター(PGの場合はココ)を渡します
+テストとしてDBが必要なのでDockerのpostgres利用することにして、簡単にMakefileを用意します
+$ docker run --name go-pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -e POSTGRES_DB=test -p 5432:5432 -d postgres:12.4
+init-db: @docker run --name go-pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -e POSTGRES_DB=test -p 5432:5432 -d postgres:12.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-db/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/shell-timer/">sidecarのshell scriptで時間をトリガーにする</a></h2>
     <p class="c-article__meta">
       Posted on
