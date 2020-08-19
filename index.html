@@ -78,6 +78,35 @@ if (!doNotTrack) {
   
   <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-todo1/">Go Todo練習 day1</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-19T23:38:34&#43;09:00">
+  Aug 19, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    gin-gonicとdatabase/sqlの基本的な動作は試せたので、早速ど定番のTodoアプリを作ってみます。やっぱ試してみないと不明点は見つかりにくいですしね！
+day1ということで簡単な内容で今回は作ります
+ main.goのみ DBはpostgres使う TODOアプリで登録、取得のみ対応  作成したコードはsourjp/go-practice/day1にあります。
+1. TODOを定義 ここでのポイントは FinishedAt の、*time.Time です。たとえ omitempty を使っていても、 time.Time のゼロ値は対象外(表示される)となります。
+JSON omitempty With time.Time Fieldが参考になります。
+そのため、pointerにしてnil扱いにすることでemptyと判定させることができます。 ただDBの視点で考えたときに、登録時にそもそもデータがないのだからomitempty関係なく空だからそりゃでないじゃんという・・・
+構造体をMarshalする時には知っといた方がいいポイントかと思いました。
+type TODO struct { ID int `db:&#34;id&#34; json:&#34;id&#34;` Title string `db:&#34;title&#34; json:&#34;title&#34;` Message string `db:&#34;message&#34; json:&#34;message&#34;` CreatedAt time.Time `db:&#34;created_at&#34; json:&#34;created_at&#34;` FinishedAt *time.Time `db:&#34;finished_at&#34; json:&#34;finished_at,omitempty&#34;` } /* $ make t-get [ { &#34;id&#34;: 1, &#34;title&#34;: &#34;study&#34;, &#34;message&#34;: &#34;study&#34;, &#34;created_at&#34;: &#34;2020-08-19T22:59:42.568475Z&#34;, &#34;finished_at&#34;: &#34;0001-01-01T00:00:00Z&#34; &lt;--- time.Timeのゼロ値で入れてしまった }, { &#34;id&#34;: 2, &#34;title&#34;: &#34;study2&#34;, &#34;message&#34;: &#34;study2&#34;, &#34;created_at&#34;: &#34;2020-08-19T23:14:50.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-todo1/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+  
+    
+  <article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-db/">Go database/sql の操作ガイドあったんかい</a></h2>
     <p class="c-article__meta">
       Posted on
