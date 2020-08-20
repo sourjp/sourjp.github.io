@@ -78,6 +78,33 @@ if (!doNotTrack) {
   
   <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/comp-abc175/">AtCoder ABC175</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-20T22:13:35&#43;09:00">
+  Aug 20, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    最初プログラミングを勉強し始めた時はひたらすら書く練習をしたくて、AtCoderを通して計算量や数学など学んでいました。 ただアプリケーションを開発するスキルがつくわけではないので最近は少し休んでいました。
+Goの書き方もわかってきたので久しぶりにやってみたのですが、面白いですね。 当時はPythonしか書けなかったので、Goと比較しながら簡単なA, Bだけ解いてみました。
+ABC175A 3つしか数字がないので2^3 = 8通りなのでロジック考えるより場合分けした方が生産的ですね。
+Python - ABC175A/Rainy Season
+s = input() if s == &#34;RRR&#34;: print(3) elif s == &#34;RRS&#34; or s == &#34;SRR&#34;: print(2) elif s == &#34;SSS&#34;: print(0) else: print(1) Go - ABC175A/Rainy Season
+package main import &#34;fmt&#34; func main() { var n string fmt.Scan(&amp;n) switch n { case &#34;RRR&#34;: fmt.Println(3) case &#34;RRS&#34;, &#34;SRR&#34;: fmt.Println(2) case &#34;SSS&#34;: fmt.Println(0) default: fmt.Println(1) } } ABC175B 三角形なので次の定理を満たせばいいですね
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/comp-abc175/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+  
+    
+  <article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/k8s-fieldref/">k8s FieldRef.labelsについて</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -305,36 +332,6 @@ Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojec
 </article>
 
 
-  
-    
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/hugo/">Hugo始めました</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-11T20:53:54&#43;09:00">
-  Aug 11, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Hugoについて Golang製の静的サイトジェネレータ。高速。
-Theme選び 今では結構選択肢が多い。シンプルが好みなので、Picklesを使うことにした。
- Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されているが、次を参考にするとGitHub Pagesが無料だし定番ぽい。
- 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考を読むとデプロイ方法は次の通りとわかったが、サクッと実装できずハマった。。
- blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  今回採用した1の方法について補足する。選んだ理由はHugoの設定関連をprivate repositoryにして隠すことができること。あと分かりやすい。
-例えば sample さんのGITHUBアカウントだと、repositoryを二つ作る。
- Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすること。
-こんな感じ。
-tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── archetypes ├── config.toml ├── content ├── data ├── layouts ├── public // submoduleでsample/sample.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/hugo/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
 
 <nav class="c-pagination p-pagination">
   <div class="c-pagination__ctrl">
@@ -343,9 +340,11 @@ tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── arche
     </div>
     <div class="c-pagination__older">
       
+      <a href="/page/2/">Older</a>
+      
     </div>
   </div>
-  <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
+  <span class="c-pagination__count p-pagination__count">Page 1 of 2</span>
 </nav>
  
 <aside class="p-author">

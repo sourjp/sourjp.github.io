@@ -7,10 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; sourjp</copyright>
-    <lastBuildDate>Thu, 20 Aug 2020 22:08:59 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2020 22:13:35 +0900</lastBuildDate>
     
 	<atom:link href="https://sourjp.github.io/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AtCoder ABC175</title>
+      <link>https://sourjp.github.io/posts/comp-abc175/</link>
+      <pubDate>Thu, 20 Aug 2020 22:13:35 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/posts/comp-abc175/</guid>
+      <description>最初プログラミングを勉強し始めた時はひたらすら書く練習をしたくて、AtCoderを通して計算量や数学など学んでいました。 ただアプリケーションを開発するスキルがつくわけではないので最近は少し休んでいました。
+Goの書き方もわかってきたので久しぶりにやってみたのですが、面白いですね。 当時はPythonしか書けなかったので、Goと比較しながら簡単なA, Bだけ解いてみました。
+ABC175A 3つしか数字がないので2^3 = 8通りなのでロジック考えるより場合分けした方が生産的ですね。
+Python - ABC175A/Rainy Season
+s = input() if s == &amp;#34;RRR&amp;#34;: print(3) elif s == &amp;#34;RRS&amp;#34; or s == &amp;#34;SRR&amp;#34;: print(2) elif s == &amp;#34;SSS&amp;#34;: print(0) else: print(1) Go - ABC175A/Rainy Season
+package main import &amp;#34;fmt&amp;#34; func main() { var n string fmt.Scan(&amp;amp;n) switch n { case &amp;#34;RRR&amp;#34;: fmt.Println(3) case &amp;#34;RRS&amp;#34;, &amp;#34;SRR&amp;#34;: fmt.Println(2) case &amp;#34;SSS&amp;#34;: fmt.Println(0) default: fmt.Println(1) } } ABC175B 三角形なので次の定理を満たせばいいですね</description>
+    </item>
     
     <item>
       <title>k8s FieldRef.labelsについて</title>
