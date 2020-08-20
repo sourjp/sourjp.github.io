@@ -87,10 +87,10 @@ package main import ( &amp;#34;flag&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;os&a
     
     <item>
       <title>gosecいいね</title>
-      <link>https://sourjp.github.io/posts/gosec/</link>
+      <link>https://sourjp.github.io/posts/go-gosec/</link>
       <pubDate>Wed, 12 Aug 2020 22:18:08 +0900</pubDate>
       
-      <guid>https://sourjp.github.io/posts/gosec/</guid>
+      <guid>https://sourjp.github.io/posts/go-gosec/</guid>
       <description>securego/gosecなるものを教えてもらった。 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。
 どんな内容をチェックしてくれる？ Available rulesがその一覧。
 もう少し細かいところは公式サイトにありますが、更新はされてなさそうですね。 GitHubは月に5-10回ぐらいcommitされているので活発そうです。
