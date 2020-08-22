@@ -3,6 +3,46 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sourjp.github.io/categories/</loc>
+    <lastmod>2020-08-22T16:38:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/tags/go/</loc>
+    <lastmod>2020-08-22T16:38:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/posts/go-todo2/</loc>
+    <lastmod>2020-08-22T16:38:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/</loc>
+    <lastmod>2020-08-22T16:38:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/posts/</loc>
+    <lastmod>2020-08-22T16:38:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/tags/</loc>
+    <lastmod>2020-08-22T16:38:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/categories/tech/</loc>
+    <lastmod>2020-08-22T16:38:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/tags/try/</loc>
+    <lastmod>2020-08-22T16:38:25+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sourjp.github.io/tags/atcoder/</loc>
     <lastmod>2020-08-20T22:13:35+09:00</lastmod>
   </url>
@@ -13,37 +53,7 @@
   </url>
   
   <url>
-    <loc>https://sourjp.github.io/categories/</loc>
-    <lastmod>2020-08-20T22:13:35+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sourjp.github.io/tags/go/</loc>
-    <lastmod>2020-08-20T22:13:35+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sourjp.github.io/</loc>
-    <lastmod>2020-08-20T22:13:35+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sourjp.github.io/posts/</loc>
-    <lastmod>2020-08-20T22:13:35+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sourjp.github.io/tags/python/</loc>
-    <lastmod>2020-08-20T22:13:35+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sourjp.github.io/tags/</loc>
-    <lastmod>2020-08-20T22:13:35+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sourjp.github.io/categories/tech/</loc>
     <lastmod>2020-08-20T22:13:35+09:00</lastmod>
   </url>
   
@@ -59,11 +69,6 @@
   
   <url>
     <loc>https://sourjp.github.io/posts/go-todo1/</loc>
-    <lastmod>2020-08-19T23:38:34+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sourjp.github.io/tags/try/</loc>
     <lastmod>2020-08-19T23:38:34+09:00</lastmod>
   </url>
   

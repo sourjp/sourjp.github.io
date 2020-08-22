@@ -7,10 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; sourjp</copyright>
-    <lastBuildDate>Wed, 19 Aug 2020 23:38:34 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2020 16:38:25 +0900</lastBuildDate>
     
 	<atom:link href="https://sourjp.github.io/tags/try/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go Todo練習 day2</title>
+      <link>https://sourjp.github.io/posts/go-todo2/</link>
+      <pubDate>Sat, 22 Aug 2020 16:38:25 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/posts/go-todo2/</guid>
+      <description>前回の続きということでday2です
+ TODOにUpdate, Deleteを追加 Packageを分ける  CRUDなTODOになったと思います。
+作成したコードはsourjp/go-practice/day2にあります。
+構成 少ない内容であればMVCで分ける方がわかりやすいですね。
+$ tree . ├── Makefile ├── controllers │ ├── router.go │ └── todo.go ├── go.mod ├── go.sum ├── main.go ├── models │ ├── db.go │ └── todo.go └── todo.sql package models todo.sql
+CREATE TABLE IF NOT EXISTS todo ( id SERIAL NOT NULL PRIMARY KEY, title VARCHAR(25), message VARCHAR(255), created_at TIMESTAMP, updated_at TIMESTAMP, finished_at TIMESTAMP ) models/db.go
+package models import ( &amp;#34;database/sql&amp;#34; &amp;#34;fmt&amp;#34; ) func NewDB() (*sql.</description>
+    </item>
     
     <item>
       <title>Go Todo練習 day1</title>

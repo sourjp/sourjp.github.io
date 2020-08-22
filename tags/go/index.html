@@ -78,6 +78,34 @@ if (!doNotTrack) {
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-todo2/">Go Todo練習 day2</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-22T16:38:25&#43;09:00">
+  Aug 22, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    前回の続きということでday2です
+ TODOにUpdate, Deleteを追加 Packageを分ける  CRUDなTODOになったと思います。
+作成したコードはsourjp/go-practice/day2にあります。
+構成 少ない内容であればMVCで分ける方がわかりやすいですね。
+$ tree . ├── Makefile ├── controllers │ ├── router.go │ └── todo.go ├── go.mod ├── go.sum ├── main.go ├── models │ ├── db.go │ └── todo.go └── todo.sql package models todo.sql
+CREATE TABLE IF NOT EXISTS todo ( id SERIAL NOT NULL PRIMARY KEY, title VARCHAR(25), message VARCHAR(255), created_at TIMESTAMP, updated_at TIMESTAMP, finished_at TIMESTAMP ) models/db.go
+package models import ( &#34;database/sql&#34; &#34;fmt&#34; ) func NewDB() (*sql.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-todo2/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/comp-abc175/">AtCoder ABC175</a></h2>
     <p class="c-article__meta">
       Posted on

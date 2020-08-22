@@ -78,6 +78,34 @@ if (!doNotTrack) {
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-todo2/">Go Todo練習 day2</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-22T16:38:25&#43;09:00">
+  Aug 22, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    前回の続きということでday2です
+ TODOにUpdate, Deleteを追加 Packageを分ける  CRUDなTODOになったと思います。
+作成したコードはsourjp/go-practice/day2にあります。
+構成 少ない内容であればMVCで分ける方がわかりやすいですね。
+$ tree . ├── Makefile ├── controllers │ ├── router.go │ └── todo.go ├── go.mod ├── go.sum ├── main.go ├── models │ ├── db.go │ └── todo.go └── todo.sql package models todo.sql
+CREATE TABLE IF NOT EXISTS todo ( id SERIAL NOT NULL PRIMARY KEY, title VARCHAR(25), message VARCHAR(255), created_at TIMESTAMP, updated_at TIMESTAMP, finished_at TIMESTAMP ) models/db.go
+package models import ( &#34;database/sql&#34; &#34;fmt&#34; ) func NewDB() (*sql.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-todo2/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/comp-abc175/">AtCoder ABC175</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -301,33 +329,6 @@ package main import ( &#34;flag&#34; &#34;fmt&#34; &#34;os&#34; ) func main() { 
   <div class="c-article__summary">
     Qiita: ArgoCDをArgoCDで管理 + Kustomizeに書いた。
   </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-gosec/">gosecいいね</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-12T22:18:08&#43;09:00">
-  Aug 12, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    securego/gosecなるものを教えてもらった。 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。
-どんな内容をチェックしてくれる？ Available rulesがその一覧。
-もう少し細かいところは公式サイトにありますが、更新はされてなさそうですね。 GitHubは月に5-10回ぐらいcommitされているので活発そうです。
-Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojectで採番している番号で、その元はCWEのようです。
-対応表を見ると、例えば G102 は CWE-200 にマッチしていて、CWE-22: Improper Limitation of a Pathname to a Restricted Directory (&lsquo;Path Traversal&rsquo;)とアクセスすれば良さそうです。
-// GetCwe creates a cwe object for a given RuleID func GetCwe(id string) Cwe { return Cwe{ID: id, URL: fmt.Sprintf(&#34;https://cwe.mitre.org/data/definitions/%s.html&#34;, id)} } // IssueToCWE maps gosec rules to CWEs var IssueToCWE = map[string]Cwe{ &#34;G101&#34;: GetCwe(&#34;798&#34;), &#34;G102&#34;: GetCwe(&#34;200&#34;), ---snip--- } 誰が使ってるの？ リストがありました。 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/go-gosec/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 

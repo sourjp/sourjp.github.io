@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; sourjp</copyright>
-    <lastBuildDate>Thu, 20 Aug 2020 22:13:35 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2020 16:38:25 +0900</lastBuildDate>
     
 	<atom:link href="https://sourjp.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go</title>
+      <link>https://sourjp.github.io/tags/go/</link>
+      <pubDate>Sat, 22 Aug 2020 16:38:25 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>try</title>
+      <link>https://sourjp.github.io/tags/try/</link>
+      <pubDate>Sat, 22 Aug 2020 16:38:25 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/tags/try/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>atcoder</title>
@@ -18,15 +36,6 @@
       <pubDate>Thu, 20 Aug 2020 22:13:35 +0900</pubDate>
       
       <guid>https://sourjp.github.io/tags/atcoder/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://sourjp.github.io/tags/go/</link>
-      <pubDate>Thu, 20 Aug 2020 22:13:35 +0900</pubDate>
-      
-      <guid>https://sourjp.github.io/tags/go/</guid>
       <description></description>
     </item>
     
@@ -45,15 +54,6 @@
       <pubDate>Thu, 20 Aug 2020 22:08:59 +0900</pubDate>
       
       <guid>https://sourjp.github.io/tags/k8s/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>try</title>
-      <link>https://sourjp.github.io/tags/try/</link>
-      <pubDate>Wed, 19 Aug 2020 23:38:34 +0900</pubDate>
-      
-      <guid>https://sourjp.github.io/tags/try/</guid>
       <description></description>
     </item>
     
