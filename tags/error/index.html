@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Tags</title>
-  <meta property="og:title" content="Tags" />
-  <meta name="twitter:title" content="Tags" />
+  <title>error</title>
+  <meta property="og:title" content="error" />
+  <meta name="twitter:title" content="error" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="sourjp"/>
   <meta property="og:site_name" content="note." />
-  <meta property="og:url" content="https://sourjp.github.io/tags/" />
+  <meta property="og:url" content="https://sourjp.github.io/tags/error/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -71,42 +71,65 @@ if (!doNotTrack) {
 
   <main id="main" class="l-main">
 
+<h2 class="c-title p-tag-title">error</h2>
 
-<section>
-  <h2>Tags</h2>
-  <ul>
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-error/">Go Errorの基本的なこと</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-22T18:34:02&#43;09:00">
+  Aug 22, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    カスタムエラーについて理解が浅かったので改めて整理したいと思います。
+基本形 仕様をみる errorはinterfaceのため Error() string を満たせばいいとあります。
+type error interface { Error() string } errosがまさにその実装を踏まえて作られております。
+package errors // errors.New()はその構造体を返す func New(text string) error { return &amp;errorString{text} } // errorStringというError() stringを満たす構造体を作る type errorString struct { s string } func (e *errorString) Error() string { return e.s } 実装してみる 同じように作ってみました。 エラー情報として欲しい内容を構造体に定義したら良さそうですね。
+type TestError struct { first, second string } func (e TestError) Error() string { return fmt.Sprintf(&#34;%s --- %s&#34;, e.first, e.second) } func NewErr(first, second string) error { return &amp;TestError{first, second} } func main() { fmt.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-error/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+<nav class="c-pagination p-pagination">
+  <div class="c-pagination__ctrl">
+    <div class="c-pagination__newer">
+      
+    </div>
+    <div class="c-pagination__older">
+      
+    </div>
+  </div>
+  <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
+</nav>
+
+
+<aside class="p-author">
+  
+  
+  <div class="p-author__body">
+    
+    <p class="c-title p-author__name ">sourjp</p>
     
     
-    <li><a href="https://sourjp.github.io/tags/atcoder">atcoder</a> (1)</li>
+    <p>元ネットワークエンジニア。バックエンドに興味津々。最近はGoとPython触りたい。ご連絡はTwitterでDMください。</p>
     
-    <li><a href="https://sourjp.github.io/tags/cmd">cmd</a> (1)</li>
     
-    <li><a href="https://sourjp.github.io/tags/db">db</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/devops">devops</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/error">error</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/gin">gin</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/go">go</a> (9)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/hugo">hugo</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/import">import</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/k8s">k8s</a> (2)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/python">python</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/qiita">qiita</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/sh">sh</a> (1)</li>
-    
-    <li><a href="https://sourjp.github.io/tags/try">try</a> (2)</li>
-    
-  </ul>
-</section>
+  </div>
+  
+</aside>
+
+
   </main>
   
 <nav class="l-nav p-menu">
