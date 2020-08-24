@@ -88,7 +88,7 @@ if (!doNotTrack) {
     </p>
   </header>
   <div class="c-article__summary">
-    database/sqlを触ってますが、いまいちしっかり説明してくれるリソースがないなあと思ってたら、goのwikiにGo database/sql tutorialがあった！
+    database/sqlを触ってますが、いまいちしっかり説明してくれるリソースがないなあと思ってたら、goのwikiにGo database/sql tutorialがありました！
 ということで試しながらポイントを整理してきます。
 Overview  DBへのアクセスには sql.DB を利用 sql.DB　は指定したDriverへアクセスを抽象化した存在 これによってDriverがPostgresでも、MySQLでも統一した操作を提供  Importing a Database Driver  利用には database/sql とDriverパッケージの二つが必要 一般的にDriverパッケージは依存するため使わない database/sql を介してアクセス Dirver自体は次のようにすることでDriverとして登録(Go import _ ってなんだみてね)  import ( &#34;database/sql&#34; _ &#34;github.com/lib/pq&#34; ) wikiではmysqlですが、今回はpostgres driverを使います
 Accessing the Database  sql.Open()により取得したobjectでDBを操作可能  第一引数はdriverの名前で、第二引数はパラメーター(PGの場合はココ)を渡します

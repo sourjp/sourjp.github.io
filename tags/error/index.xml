@@ -19,7 +19,7 @@
       
       <guid>https://sourjp.github.io/posts/go-error/</guid>
       <description>カスタムエラーについて理解が浅かったので改めて整理したいと思います。
-基本形 仕様をみる errorはinterfaceのため Error() string を満たせばいいとあります。
+基本形 仕様を確認 errorはinterfaceのため Error() string を満たせばいいとあります。
 type error interface { Error() string } errosがまさにその実装を踏まえて作られております。
 package errors // errors.New()はその構造体を返す func New(text string) error { return &amp;amp;errorString{text} } // errorStringというError() stringを満たす構造体を作る type errorString struct { s string } func (e *errorString) Error() string { return e.s } 実装してみる 同じように作ってみました。 エラー情報として欲しい内容を構造体に定義したら良さそうですね。
 type TestError struct { first, second string } func (e TestError) Error() string { return fmt.Sprintf(&amp;#34;%s --- %s&amp;#34;, e.first, e.second) } func NewErr(first, second string) error { return &amp;amp;TestError{first, second} } func main() { fmt.</description>

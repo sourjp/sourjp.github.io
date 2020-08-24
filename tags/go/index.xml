@@ -19,7 +19,7 @@
       
       <guid>https://sourjp.github.io/posts/go-error/</guid>
       <description>カスタムエラーについて理解が浅かったので改めて整理したいと思います。
-基本形 仕様をみる errorはinterfaceのため Error() string を満たせばいいとあります。
+基本形 仕様を確認 errorはinterfaceのため Error() string を満たせばいいとあります。
 type error interface { Error() string } errosがまさにその実装を踏まえて作られております。
 package errors // errors.New()はその構造体を返す func New(text string) error { return &amp;amp;errorString{text} } // errorStringというError() stringを満たす構造体を作る type errorString struct { s string } func (e *errorString) Error() string { return e.s } 実装してみる 同じように作ってみました。 エラー情報として欲しい内容を構造体に定義したら良さそうですね。
 type TestError struct { first, second string } func (e TestError) Error() string { return fmt.Sprintf(&amp;#34;%s --- %s&amp;#34;, e.first, e.second) } func NewErr(first, second string) error { return &amp;amp;TestError{first, second} } func main() { fmt.</description>
@@ -76,7 +76,7 @@ type TODO struct { ID int `db:&amp;#34;id&amp;#34; json:&amp;#34;id&amp;#34;` Ti
       <pubDate>Mon, 17 Aug 2020 22:02:45 +0900</pubDate>
       
       <guid>https://sourjp.github.io/posts/go-db/</guid>
-      <description>database/sqlを触ってますが、いまいちしっかり説明してくれるリソースがないなあと思ってたら、goのwikiにGo database/sql tutorialがあった！
+      <description>database/sqlを触ってますが、いまいちしっかり説明してくれるリソースがないなあと思ってたら、goのwikiにGo database/sql tutorialがありました！
 ということで試しながらポイントを整理してきます。
 Overview  DBへのアクセスには sql.DB を利用 sql.DB　は指定したDriverへアクセスを抽象化した存在 これによってDriverがPostgresでも、MySQLでも統一した操作を提供  Importing a Database Driver  利用には database/sql とDriverパッケージの二つが必要 一般的にDriverパッケージは依存するため使わない database/sql を介してアクセス Dirver自体は次のようにすることでDriverとして登録(Go import _ ってなんだみてね)  import ( &amp;#34;database/sql&amp;#34; _ &amp;#34;github.com/lib/pq&amp;#34; ) wikiではmysqlですが、今回はpostgres driverを使います
 Accessing the Database  sql.Open()により取得したobjectでDBを操作可能  第一引数はdriverの名前で、第二引数はパラメーター(PGの場合はココ)を渡します
@@ -93,7 +93,7 @@ init-db: @docker run --name go-pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=roo
       <guid>https://sourjp.github.io/posts/go-gin/</guid>
       <description>gin-gonic/ginが圧倒的な人気を誇っているので、README.mdにある一通りの機能でWebAPI(JSON format)の想定で関わりそうな機能を試していきます。
 記載してあるコードはREADME.mdにあるコードを抜粋したり、改変したりして記載しています。
-QuickStart とりあえずQuickStartのコードを試してみる。
+QuickStart とりあえずQuickStartのコードを試してみます。
 package main import &amp;#34;github.com/gin-gonic/gin&amp;#34; func main() { r := gin.Default() r.GET(&amp;#34;/ping&amp;#34;, func(c *gin.Context) { c.JSON(200, gin.H{ &amp;#34;message&amp;#34;: &amp;#34;pong&amp;#34;, }) }) r.Run() } $ curl localhost:8080/ping {&amp;#34;message&amp;#34;:&amp;#34;pong&amp;#34;} $ go run main.go [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. [GIN-debug] [WARNING] Running in &amp;#34;debug&amp;#34; mode. Switch to &amp;#34;release&amp;#34; mode in production. - using env: export GIN_MODE=release - using code: gin.SetMode(gin.ReleaseMode) [GIN-debug] GET /ping --&amp;gt; main.</description>
     </item>
     

@@ -97,7 +97,7 @@ if (!doNotTrack) {
   <section id="js-article" class="p-article__body">
     <p>カスタムエラーについて理解が浅かったので改めて整理したいと思います。</p>
 <h1 id="基本形">基本形</h1>
-<h2 id="仕様をみる">仕様をみる</h2>
+<h2 id="仕様を確認">仕様を確認</h2>
 <p><a href="https://golang.org/ref/spec#Errors">error</a>はinterfaceのため <code>Error() string</code> を満たせばいいとあります。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#66d9ef">error</span> <span style="color:#66d9ef">interface</span> {
 	<span style="color:#a6e22e">Error</span>() <span style="color:#66d9ef">string</span>
@@ -146,7 +146,7 @@ if (!doNotTrack) {
 </span><span style="color:#75715e">no.1 --- no.2
 </span><span style="color:#75715e">*/</span>
 </code></pre></div><h1 id="wrapの仕組みを調べる">Wrapの仕組みを調べる</h1>
-<p>とりあえず試してみる</p>
+<p>とりあえず試してみます。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
 	<span style="color:#a6e22e">errA</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;A error&#34;</span>)
 	<span style="color:#a6e22e">errB</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;B error, %w&#34;</span>, <span style="color:#a6e22e">errA</span>)
@@ -254,7 +254,6 @@ if (!doNotTrack) {
 <li>Handlerに渡すときにカスタムエラーに整理して渡す</li>
 <li>IsやAsなどでエラーハンドリングする</li>
 </ul>
-<p>また今度何かしらサンプル作って試してみよう。</p>
 
   </section>
   <footer>
