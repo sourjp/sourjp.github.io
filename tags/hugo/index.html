@@ -88,13 +88,12 @@ if (!doNotTrack) {
     </p>
   </header>
   <div class="c-article__summary">
-    Hugoについて Golang製の静的サイトジェネレータ。高速。
-Theme選び 今では結構選択肢が多い。シンプルが好みなので、Picklesを使うことにした。
- Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されているが、次を参考にするとGitHub Pagesが無料だし定番ぽい。
- 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考を読むとデプロイ方法は次の通りとわかったが、サクッと実装できずハマった。。
- blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  今回採用した1の方法について補足する。選んだ理由はHugoの設定関連をprivate repositoryにして隠すことができること。あと分かりやすい。
-例えば sample さんのGITHUBアカウントだと、repositoryを二つ作る。
- Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすること。
+    Hugoについて Go言語の静的サイトジェネレータです。md形式でblogを作れて簡単です。
+Theme選び 出始め当時はテーマが少ないなんて記事も多かったですが、今では結構選択肢が多いようです。私はシンプルが好みなので、Picklesを使うことにしました。
+ Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されています。次を参考にGitHub Pagesが無料なので使うことします。
+ 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考URLを読むとデプロイ方法は次の通りとわかり１の手法にすることにしました。理由はHugoの設定関連をprivate repositoryにして隠すことができること、単純にわかりやすいからです。
+ blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  ただいくつかの点でハマったので補足情報をメモします。例えば sample さんのGITHUBアカウントだと、repositoryを二つ作ります。
+ Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすることです。
 こんな感じ。
 tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── archetypes ├── config.toml ├── content ├── data ├── layouts ├── public // submoduleでsample/sample.
   </div>

@@ -96,10 +96,10 @@ if (!doNotTrack) {
   
   <section id="js-article" class="p-article__body">
     <p>shell scriptを時間指定で実行したいときに <code>cronjob</code> や <code>at</code> など方法があると思います。</p>
-<p>ただKubernetes環境で実行したいときはどうでしょうか？
-shell scriptを実行するだけなら <code>cronjob</code> リソースを使えば良いのですが、今回は対象アプリのsidecarとして載せる必要がありました。この場合は <code>Deployment</code> リソースなので、shell scriptに時間トリガーを仕込む必要がありました。</p>
-<p><code>integer</code> で比較など色々試行錯誤しましたが、stackoverflowの<a href="https://unix.stackexchange.com/questions/395933/how-to-check-if-the-current-time-is-between-2300-and-0630">How to check if the current time is between 23:00 and 06:30</a>に素晴らしいアイデアがありました。</p>
-<p>結論は<code>date</code>を<code>string</code>で取り出して、<code>case</code>で判定を行います。</p>
+<p>ただKubernetes環境で実行したいときはどうでしょうか？</p>
+<p>shell scriptを実行するだけなら <code>cronjob</code> リソースを使えば良いのですが、今回は対象アプリのsidecarとして載せる必要がありました。この場合は <code>Deployment</code> リソースなので、shell scriptに時間トリガーを仕込む必要がありました。</p>
+<p>時間を <code>integer</code> に変換して比較・・・など色々試行錯誤しましたが、stackoverflowの<a href="https://unix.stackexchange.com/questions/395933/how-to-check-if-the-current-time-is-between-2300-and-0630">How to check if the current time is between 23:00 and 06:30</a>に素晴らしいアイデアがありました。</p>
+<p>結論は <code>date</code> を <code>string</code> で取り出して、<code>case</code> で判定を行います。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">while</span> :; <span style="color:#66d9ef">do</span>
     currenttime<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date +%H:%M<span style="color:#66d9ef">)</span>

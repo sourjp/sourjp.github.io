@@ -18,7 +18,7 @@
       <pubDate>Thu, 20 Aug 2020 22:08:59 +0900</pubDate>
       
       <guid>https://sourjp.github.io/posts/k8s-fieldref/</guid>
-      <description>Qiita: FieldRef.labels[&amp;lsquo;KEY&amp;rsquo;]知らなかった を書いた。</description>
+      <description>Qiita: FieldRef.labels[&amp;lsquo;KEY&amp;rsquo;]知らなかった を書きました。</description>
     </item>
     
     <item>
@@ -28,12 +28,12 @@
       
       <guid>https://sourjp.github.io/posts/shell-timer/</guid>
       <description>shell scriptを時間指定で実行したいときに cronjob や at など方法があると思います。
-ただKubernetes環境で実行したいときはどうでしょうか？ shell scriptを実行するだけなら cronjob リソースを使えば良いのですが、今回は対象アプリのsidecarとして載せる必要がありました。この場合は Deployment リソースなので、shell scriptに時間トリガーを仕込む必要がありました。
-integer で比較など色々試行錯誤しましたが、stackoverflowのHow to check if the current time is between 23:00 and 06:30に素晴らしいアイデアがありました。
-結論はdateをstringで取り出して、caseで判定を行います。
+ただKubernetes環境で実行したいときはどうでしょうか？
+shell scriptを実行するだけなら cronjob リソースを使えば良いのですが、今回は対象アプリのsidecarとして載せる必要がありました。この場合は Deployment リソースなので、shell scriptに時間トリガーを仕込む必要がありました。
+時間を integer に変換して比較・・・など色々試行錯誤しましたが、stackoverflowのHow to check if the current time is between 23:00 and 06:30に素晴らしいアイデアがありました。
+結論は date を string で取り出して、case で判定を行います。
 #!/bin/bash while :; do currenttime=$(date +%H:%M) echo $currenttime case &amp;#34;$currenttime&amp;#34; in (04:21) # 04:21にbreakしてscriptを終了 echo &amp;#34;break&amp;#34; break ;; (*) echo &amp;#34;*&amp;#34; ;; esac sleep 5s done exit 0 動作させた結果がこちらです。
-$ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。02:00~04:00の間などの条件を使いたいときは正規表現です。
-#!/bin/bash while :; do currenttime=$(date +%H:%M) echo $currenttime case &amp;#34;$currenttime&amp;#34; in (0[2-4]:*) echo &amp;#34;break&amp;#34; break ;; (*) echo &amp;#34;*&amp;#34; ;; esac sleep 5s done exit 0 簡単なことですが知っとくと便利なことでした。</description>
+$ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。02:00~04:00の間などの条件を使いたいときは正規表現です。</description>
     </item>
     
   </channel>

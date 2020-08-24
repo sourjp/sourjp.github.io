@@ -94,32 +94,31 @@ if (!doNotTrack) {
   
   <section id="js-article" class="p-article__body">
     <h1 id="hugoについて">Hugoについて</h1>
-<p>Golang製の静的サイトジェネレータ。高速。</p>
+<p>Go言語の静的サイトジェネレータです。md形式でblogを作れて簡単です。</p>
 <h1 id="theme選び">Theme選び</h1>
-<p>今では結構選択肢が多い。シンプルが好みなので、<code>Pickles</code>を使うことにした。</p>
+<p>出始め当時はテーマが少ないなんて記事も多かったですが、今では結構選択肢が多いようです。私はシンプルが好みなので、<code>Pickles</code>を使うことにしました。</p>
 <ul>
 <li><a href="https://themes.gohugo.io/hugo_theme_pickles/">Pickles</a></li>
 <li><a href="https://themes.gohugo.io/hugo-theme-cactus/">Cactus</a></li>
 </ul>
 <h1 id="deploy方法">Deploy方法</h1>
-<p>AWS, Firebaseなど色々用意されているが、次を参考にするとGitHub Pagesが無料だし定番ぽい。</p>
+<p>AWS, Firebaseなど色々用意されています。次を参考にGitHub Pagesが無料なので使うことします。</p>
 <ol>
 <li><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">公式</a></li>
 <li><a href="https://www.membersedge.co.jp/blog/create-hugo-theme-and-deploy-to-github-pages/">Hugoで1からテーマを作ってGitHub Pagesにデプロイする</a></li>
 </ol>
-<p>参考を読むとデプロイ方法は次の通りとわかったが、サクッと実装できずハマった。。</p>
+<p>参考URLを読むとデプロイ方法は次の通りとわかり１の手法にすることにしました。理由はHugoの設定関連をprivate repositoryにして隠すことができること、単純にわかりやすいからです。</p>
 <ol>
 <li>blog用のrepositoryの <code>master</code> branchから配信</li>
 <li>blog用のrepositoryの <code>gh-pages</code> branchから配信</li>
 <li>blog用のrepositoryの <code>master</code> branchの <code>/dir</code> から配信</li>
 </ol>
-<p>今回採用した1の方法について補足する。選んだ理由はHugoの設定関連をprivate repositoryにして隠すことができること。あと分かりやすい。</p>
-<p>例えば <code>sample</code> さんのGITHUBアカウントだと、repositoryを二つ作る。</p>
+<p>ただいくつかの点でハマったので補足情報をメモします。例えば <code>sample</code> さんのGITHUBアカウントだと、repositoryを二つ作ります。</p>
 <ul>
 <li>Hugoの設定ファイルを管理するrepository <code>e.g. sample/blog</code></li>
 <li>GitHub Pages配信repository <code>e.g. sample/sample.github.io</code></li>
 </ul>
-<p>ポイントは <code>sample/blog/</code> に生成される <code>/public</code> を、<code>sample/sample.github.io</code> のsubmoduleとすること。</p>
+<p>ポイントは <code>sample/blog/</code> に生成される <code>/public</code> を、<code>sample/sample.github.io</code> のsubmoduleとすることです。</p>
 <p>こんな感じ。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"> <span style="color:#a6e22e">tree</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">L</span> <span style="color:#ae81ff">1</span>
 <span style="color:#a6e22e">sample</span><span style="color:#f92672">/</span><span style="color:#a6e22e">blog</span> <span style="color:#75715e">// Hugo用のrepository
@@ -133,21 +132,21 @@ if (!doNotTrack) {
 </span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">resources</span>
 <span style="color:#960050;background-color:#1e0010">├──</span> <span style="color:#a6e22e">static</span>
 <span style="color:#960050;background-color:#1e0010">└──</span> <span style="color:#a6e22e">themes</span>
-</code></pre></div><p>こうすると <code>sample/blog</code> の有する <code>.git/</code> ではgit remoteに <code>sample/blog</code> を参照し、<code>sample/blog/public</code> の有する <code>.git</code> ではgit remoteに <code>sample/sample.github.io</code> を参照する仕組みができる。</p>
+</code></pre></div><p>これによって <code>sample/blog</code> の有する <code>.git/</code> ではgit remoteに <code>sample/blog</code> を参照し、<code>sample/blog/public</code> の有する <code>.git</code> ではgit remoteに <code>sample/sample.github.io</code> を参照する仕組みができる。</p>
 <h1 id="運用について">運用について</h1>
-<p>整理すると必要な作業は３つありそう。</p>
+<p>整理すると必要な作業は３つありそうです。</p>
 <ol>
 <li><code>/content</code> 配下にblog記事を書く</li>
 <li>Hugoの設定関連を、<code>sample/blog</code> にPush</li>
 <li><code>/public</code> の静的ファイルを、<code>sample/sample.github.io</code> にPush</li>
 </ol>
-<p>最初の1は <code>$ hugo new posts/example.md</code> で対応する。
-残りはMakefileを作成して、</p>
-<ul>
-<li>2は <code>$ make update</code> で <code>sample/blog</code> にPush</li>
-<li>3は <code>$ make publish</code> で <code>sample/sample.github.io</code> にPush</li>
-</ul>
-<p>3のポイントは <code>/public</code> ディレクトリでの作業が必要なので<code>;</code>で<code>cd</code>した状態を維持すること。</p>
+<p>簡便にするためにMakefileも利用します。</p>
+<ol>
+<li><code>$ hugo new posts/example.md</code> で対応するこ</li>
+<li><code>$ make update</code> で <code>sample/blog</code> にPush</li>
+<li><code>$ make publish</code> で <code>sample/sample.github.io</code> にPush</li>
+</ol>
+<p>3のポイントは <code>/public</code> ディレクトリでの作業が必要なので<code>;</code>で<code>cd</code>した状態を維持することです。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">update:
 	@git add .
 	@git commit -m <span style="color:#e6db74">&#34;Update Settings&#34;</span>
@@ -156,15 +155,15 @@ if (!doNotTrack) {
 publish:
 	@hugo
 	@cd public; git add .; git commit -m <span style="color:#e6db74">&#34;publish&#34;</span>; git push origin
-</code></pre></div><h1 id="github-pagesでthemeが読み込めない">GitHub PagesでThemeが読み込めない？</h1>
-<p><code>hugo serve</code> では、問題なくpicklesのthemeが適用されていたが、GitHub Pagesだと読み込んでくれなかった。</p>
-<p>原因は <code>config.toml</code> にて、<code>baseURL = &quot;http://sourjp.github.io/&quot;</code> となっていたこと。GitHub Pagesではhttps対応なのにhttpにしたことで、Hugoが読み込む各種cssファイルなどのリンクはhttpになってしまい、エラーを返していた。</p>
-<p>なので、<code>baseURL = &quot;http://sourjp.github.io/&quot;</code> とすることで解決した。</p>
-<h1 id="picklesでpageのリストが取得できない">Picklesでpageのリストが取得できない？</h1>
-<p><code>.md</code> ファイルを <code>content/posts/</code> 以外におくと認識してくれないようでハマった。<code>pickles</code> の制限なのか、設定の制限なのか時間あるときに調べる。</p>
+</code></pre></div><h1 id="トラブルシューティング">トラブルシューティング</h1>
+<h2 id="github-pagesでthemeが読み込めない">GitHub PagesでThemeが読み込めない？</h2>
+<p><code>hugo serve</code> では、問題なくpicklesのthemeが適用されていましたが、GitHub Pagesだと読み込んでくれませんでした。</p>
+<p>原因は <code>config.toml</code> にて、<code>baseURL = &quot;http://sourjp.github.io/&quot;</code> となっていたことです。GitHub Pagesではhttps対応なのにhttpにしたことで、Hugoが読み込む各種cssファイルなどのリンクはhttpになってしまい、エラーを返していました。</p>
+<p>なので、<code>baseURL = &quot;http://sourjp.github.io/&quot;</code> とすることで解決です。</p>
+<h2 id="picklesでpageのリストが取得できない">Picklesでpageのリストが取得できない？</h2>
+<p><code>.md</code> ファイルを <code>content/posts/</code> 以外におくと認識してくれないようでハマりました。<code>pickles</code> の制限かと思いますが時間あるときに調べたいと思います。</p>
 <h1 id="まとめ">まとめ</h1>
-<p>最初は手間取ったが環境ができたら快適。ちょっとこだわりをもつと大変そうだが、まずはシンプルに運用したい。</p>
-<p>こんな感じで学んだことをblogとして書いていこうと思う。</p>
+<p>最初は手間取理ましたが環境ができたらとっても快適です。ちょっとこだわりをもつと大変そうですが、まずはシンプルに運用しつつ、学んだことをblogとして書いていこうと思います。</p>
 
   </section>
   <footer>

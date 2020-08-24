@@ -19,10 +19,10 @@
       
       <guid>https://sourjp.github.io/posts/go-import/</guid>
       <description>import _ &amp;quot;hogehoge&amp;quot; の _ は、どういう意味があるんだろうと気になったので調べました。
-init()の実行が理由 packageの中身を利用しないが、init()関数が必要な場合に利用するようです。 なので次のように動作を試してみました。
+init()の実行が理由 packageの中身を利用せずに、init()関数が必要な場合に利用するようです。 なので次のように動作を試してみました。
 main.go
 package main import ( &amp;#34;fmt&amp;#34; _ &amp;#34;github.com/sourjp/practice/hello&amp;#34; ) func main() { fmt.Println(&amp;#34;Hi&amp;#34;) } hello/hello.go
-package hello import &amp;#34;fmt&amp;#34; func init() { fmt.Println(&amp;#34;hello&amp;#34;) } 実行してみるとpackage helloを使わないが、中に定義されているinit()が実行されていることがわかります。
+package hello import &amp;#34;fmt&amp;#34; func init() { fmt.Println(&amp;#34;hello&amp;#34;) } 実行してみるとpackage helloを使いませんが、中に定義されているinit()が実行されていることがわかります。
 $ go run main.go hello Hi 次に実際のpackageでの使われ方をみていきます。
 package imageの場合 package imageでは、Decode()を行うのにRegistration()で拡張子を登録する必要があります。
  Values of the Image interface are created either by calling functions such as NewRGBA and NewPaletted, or by calling Decode on an io.Reader containing image data in a format such as GIF, JPEG or PNG.</description>

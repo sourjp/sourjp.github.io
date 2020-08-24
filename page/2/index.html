@@ -108,12 +108,13 @@ if (!doNotTrack) {
     </p>
   </header>
   <div class="c-article__summary">
-    securego/gosecなるものを教えてもらった。 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。
-どんな内容をチェックしてくれる？ Available rulesがその一覧。
-もう少し細かいところは公式サイトにありますが、更新はされてなさそうですね。 GitHubは月に5-10回ぐらいcommitされているので活発そうです。
+    securego/gosecなるものを教えてもらいました。 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。
+どんな内容をチェックしてくれる？ Available rulesがその一覧です。
+もう少し細かいところは公式サイトにありますが、更新はされてなさそうですが、調べ方は次に記載します。
 Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojectで採番している番号で、その元はCWEのようです。
 対応表を見ると、例えば G102 は CWE-200 にマッチしていて、CWE-22: Improper Limitation of a Pathname to a Restricted Directory (&lsquo;Path Traversal&rsquo;)とアクセスすれば良さそうです。
-// GetCwe creates a cwe object for a given RuleID func GetCwe(id string) Cwe { return Cwe{ID: id, URL: fmt.Sprintf(&#34;https://cwe.mitre.org/data/definitions/%s.html&#34;, id)} } // IssueToCWE maps gosec rules to CWEs var IssueToCWE = map[string]Cwe{ &#34;G101&#34;: GetCwe(&#34;798&#34;), &#34;G102&#34;: GetCwe(&#34;200&#34;), ---snip--- } 誰が使ってるの？ リストがありました。 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。
+// GetCwe creates a cwe object for a given RuleID func GetCwe(id string) Cwe { return Cwe{ID: id, URL: fmt.Sprintf(&#34;https://cwe.mitre.org/data/definitions/%s.html&#34;, id)} } // IssueToCWE maps gosec rules to CWEs var IssueToCWE = map[string]Cwe{ &#34;G101&#34;: GetCwe(&#34;798&#34;), &#34;G102&#34;: GetCwe(&#34;200&#34;), ---snip--- } 使われてるの？ リストがありました。 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。
+使い方は？ いくつかオプションがありますが、基本はこれで良さそうです。 GitHub Actionsでも gosec の名前で公開されているのでCIへの組み込みも簡単そうですね。
   </div>
   
   <a href="https://sourjp.github.io/posts/go-gosec/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -135,13 +136,12 @@ Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojec
     </p>
   </header>
   <div class="c-article__summary">
-    Hugoについて Golang製の静的サイトジェネレータ。高速。
-Theme選び 今では結構選択肢が多い。シンプルが好みなので、Picklesを使うことにした。
- Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されているが、次を参考にするとGitHub Pagesが無料だし定番ぽい。
- 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考を読むとデプロイ方法は次の通りとわかったが、サクッと実装できずハマった。。
- blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  今回採用した1の方法について補足する。選んだ理由はHugoの設定関連をprivate repositoryにして隠すことができること。あと分かりやすい。
-例えば sample さんのGITHUBアカウントだと、repositoryを二つ作る。
- Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすること。
+    Hugoについて Go言語の静的サイトジェネレータです。md形式でblogを作れて簡単です。
+Theme選び 出始め当時はテーマが少ないなんて記事も多かったですが、今では結構選択肢が多いようです。私はシンプルが好みなので、Picklesを使うことにしました。
+ Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されています。次を参考にGitHub Pagesが無料なので使うことします。
+ 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考URLを読むとデプロイ方法は次の通りとわかり１の手法にすることにしました。理由はHugoの設定関連をprivate repositoryにして隠すことができること、単純にわかりやすいからです。
+ blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  ただいくつかの点でハマったので補足情報をメモします。例えば sample さんのGITHUBアカウントだと、repositoryを二つ作ります。
+ Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすることです。
 こんな感じ。
 tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── archetypes ├── config.toml ├── content ├── data ├── layouts ├── public // submoduleでsample/sample.
   </div>

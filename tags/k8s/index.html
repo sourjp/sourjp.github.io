@@ -88,7 +88,7 @@ if (!doNotTrack) {
     </p>
   </header>
   <div class="c-article__summary">
-    Qiita: FieldRef.labels[&lsquo;KEY&rsquo;]知らなかった を書いた。
+    Qiita: FieldRef.labels[&lsquo;KEY&rsquo;]知らなかった を書きました。
   </div>
   
 </article>
@@ -109,13 +109,15 @@ if (!doNotTrack) {
   </header>
   <div class="c-article__summary">
     shell scriptを時間指定で実行したいときに cronjob や at など方法があると思います。
-ただKubernetes環境で実行したいときはどうでしょうか？ shell scriptを実行するだけなら cronjob リソースを使えば良いのですが、今回は対象アプリのsidecarとして載せる必要がありました。この場合は Deployment リソースなので、shell scriptに時間トリガーを仕込む必要がありました。
-integer で比較など色々試行錯誤しましたが、stackoverflowのHow to check if the current time is between 23:00 and 06:30に素晴らしいアイデアがありました。
-結論はdateをstringで取り出して、caseで判定を行います。
+ただKubernetes環境で実行したいときはどうでしょうか？
+shell scriptを実行するだけなら cronjob リソースを使えば良いのですが、今回は対象アプリのsidecarとして載せる必要がありました。この場合は Deployment リソースなので、shell scriptに時間トリガーを仕込む必要がありました。
+時間を integer に変換して比較・・・など色々試行錯誤しましたが、stackoverflowのHow to check if the current time is between 23:00 and 06:30に素晴らしいアイデアがありました。
+結論は date を string で取り出して、case で判定を行います。
 #!/bin/bash while :; do currenttime=$(date +%H:%M) echo $currenttime case &#34;$currenttime&#34; in (04:21) # 04:21にbreakしてscriptを終了 echo &#34;break&#34; break ;; (*) echo &#34;*&#34; ;; esac sleep 5s done exit 0 動作させた結果がこちらです。
 $ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。02:00~04:00の間などの条件を使いたいときは正規表現です。
-#!/bin/bash while :; do currenttime=$(date +%H:%M) echo $currenttime case &#34;$currenttime&#34; in (0[2-4]:*) echo &#34;break&#34; break ;; (*) echo &#34;*&#34; ;; esac sleep 5s done exit 0 簡単なことですが知っとくと便利なことでした。
   </div>
+  
+  <a href="https://sourjp.github.io/posts/shell-timer/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 

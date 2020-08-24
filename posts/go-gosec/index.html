@@ -93,12 +93,11 @@ if (!doNotTrack) {
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p><a href="https://github.com/securego/gosec">securego/gosec</a>なるものを教えてもらった。
+    <p><a href="https://github.com/securego/gosec">securego/gosec</a>なるものを教えてもらいました。
 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。</p>
 <h1 id="どんな内容をチェックしてくれる">どんな内容をチェックしてくれる？</h1>
-<p><a href="https://github.com/securego/gosec#available-rules">Available rules</a>がその一覧。</p>
-<p>もう少し細かいところは<a href="https://securego.io/docs/rules/rule-intro.html">公式サイト</a>にありますが、更新はされてなさそうですね。
-GitHubは月に5-10回ぐらいcommitされているので活発そうです。</p>
+<p><a href="https://github.com/securego/gosec#available-rules">Available rules</a>がその一覧です。</p>
+<p>もう少し細かいところは<a href="https://securego.io/docs/rules/rule-intro.html">公式サイト</a>にありますが、更新はされてなさそうですが、調べ方は次に記載します。</p>
 <h1 id="gxxxって何の番号">Gxxxって何の番号？</h1>
 <p>README.mdに書いてありました。
 gosecのprojectで採番している番号で、その元はCWEのようです。</p>
@@ -114,7 +113,7 @@ gosecのprojectで採番している番号で、その元はCWEのようです�
 	<span style="color:#e6db74">&#34;G102&#34;</span>: <span style="color:#a6e22e">GetCwe</span>(<span style="color:#e6db74">&#34;200&#34;</span>),
 <span style="color:#f92672">---</span><span style="color:#a6e22e">snip</span><span style="color:#f92672">---</span>
 }
-</code></pre></div><h1 id="誰が使ってるの">誰が使ってるの？</h1>
+</code></pre></div><h1 id="使われてるの">使われてるの？</h1>
 <p><a href="https://github.com/securego/gosec/blob/master/USERS.md">リスト</a>がありました。
 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。</p>
 <h1 id="使い方は">使い方は？</h1>
@@ -130,10 +129,9 @@ Summary:
    Nosec: <span style="color:#ae81ff">0</span>
   Issues: <span style="color:#ae81ff">0</span> // 問題があればIssue番号と、その数がカウントされる
 </code></pre></div><h1 id="まとめ">まとめ</h1>
-<p>code書いたらgosecを試していこうと思います。
-繰り返し指摘されれば自然とその書き方になることを期待して・・・</p>
-<p>あとはGxxxのそれぞれをじっくり読もうかな。</p>
-<p>今日は<a href="https://securego.io/docs/rules/g304.html">G304</a>を指摘いただいたので、<code>io.Read</code> では <code>filepath.Clean()</code> で渡すようにしようと思います。</p>
+<p>code書いたらgosecを試していこうと思います。繰り返し指摘されれば自然とその書き方になることを期待して・・・。あとはGxxxのそれぞれを読む機会が必要そうです。</p>
+<p>ちなみに今日は<a href="https://securego.io/docs/rules/g304.html">G304</a>を指摘いただいたので、<code>io.Read</code> では <code>filepath.Clean()</code> で渡すようにしようと思います。</p>
+<p>ただまあ引数にフォルダを与えたときにファイルトラバーサルされる恐れがあるということなので、そもそも引数を外から取らなければ問題ないかとは思うのでただただ鵜呑みはよくなさそうですね。</p>
 
   </section>
   <footer>

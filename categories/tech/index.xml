@@ -60,7 +60,7 @@ package main import &amp;#34;fmt&amp;#34; func main() { var n string fmt.Scan(&a
       <pubDate>Thu, 20 Aug 2020 22:08:59 +0900</pubDate>
       
       <guid>https://sourjp.github.io/posts/k8s-fieldref/</guid>
-      <description>Qiita: FieldRef.labels[&amp;lsquo;KEY&amp;rsquo;]知らなかった を書いた。</description>
+      <description>Qiita: FieldRef.labels[&amp;lsquo;KEY&amp;rsquo;]知らなかった を書きました。</description>
     </item>
     
     <item>
@@ -101,12 +101,12 @@ init-db: @docker run --name go-pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=roo
       
       <guid>https://sourjp.github.io/posts/shell-timer/</guid>
       <description>shell scriptを時間指定で実行したいときに cronjob や at など方法があると思います。
-ただKubernetes環境で実行したいときはどうでしょうか？ shell scriptを実行するだけなら cronjob リソースを使えば良いのですが、今回は対象アプリのsidecarとして載せる必要がありました。この場合は Deployment リソースなので、shell scriptに時間トリガーを仕込む必要がありました。
-integer で比較など色々試行錯誤しましたが、stackoverflowのHow to check if the current time is between 23:00 and 06:30に素晴らしいアイデアがありました。
-結論はdateをstringで取り出して、caseで判定を行います。
+ただKubernetes環境で実行したいときはどうでしょうか？
+shell scriptを実行するだけなら cronjob リソースを使えば良いのですが、今回は対象アプリのsidecarとして載せる必要がありました。この場合は Deployment リソースなので、shell scriptに時間トリガーを仕込む必要がありました。
+時間を integer に変換して比較・・・など色々試行錯誤しましたが、stackoverflowのHow to check if the current time is between 23:00 and 06:30に素晴らしいアイデアがありました。
+結論は date を string で取り出して、case で判定を行います。
 #!/bin/bash while :; do currenttime=$(date +%H:%M) echo $currenttime case &amp;#34;$currenttime&amp;#34; in (04:21) # 04:21にbreakしてscriptを終了 echo &amp;#34;break&amp;#34; break ;; (*) echo &amp;#34;*&amp;#34; ;; esac sleep 5s done exit 0 動作させた結果がこちらです。
-$ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。02:00~04:00の間などの条件を使いたいときは正規表現です。
-#!/bin/bash while :; do currenttime=$(date +%H:%M) echo $currenttime case &amp;#34;$currenttime&amp;#34; in (0[2-4]:*) echo &amp;#34;break&amp;#34; break ;; (*) echo &amp;#34;*&amp;#34; ;; esac sleep 5s done exit 0 簡単なことですが知っとくと便利なことでした。</description>
+$ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。02:00~04:00の間などの条件を使いたいときは正規表現です。</description>
     </item>
     
     <item>
@@ -115,12 +115,10 @@ $ bash test.sh 04:20 * 04:20 * 04:20 * 04:21 break バッチリですね。02:00
       <pubDate>Sun, 16 Aug 2020 16:45:31 +0900</pubDate>
       
       <guid>https://sourjp.github.io/posts/go-gin/</guid>
-      <description>バックエンドエンジニアへの転職を希望しています。最新の技術を学びたく、外部勉強会をはじめとして、クラウドサービスやKubernetesと知識をつけていった結果、Webアプリケーション開発に魅力を強く感じたことがきっかけです。
-職務経歴 請負業務を経験してきたため、自社開発のWebアプリケーションサービスに関わりたいです。
-gin-gonic/ginが圧倒的な人気を誇っているので、README.mdにある一通りの機能でWebAPI(JSON format)の想定で関わりそうな機能を試していきます。
+      <description>gin-gonic/ginが圧倒的な人気を誇っているので、README.mdにある一通りの機能でWebAPI(JSON format)の想定で関わりそうな機能を試していきます。
 記載してあるコードはREADME.mdにあるコードを抜粋したり、改変したりして記載しています。
 QuickStart とりあえずQuickStartのコードを試してみる。
-package main import &amp;#34;github.com/gin-gonic/gin&amp;#34; func main() { r := gin.Default() r.GET(&amp;#34;/ping&amp;#34;, func(c *gin.Context) { c.JSON(200, gin.H{ &amp;#34;message&amp;#34;: &amp;#34;pong&amp;#34;, }) }) r.Run() } $ curl localhost:8080/ping {&amp;#34;message&amp;#34;:&amp;#34;pong&amp;#34;} $ go run main.go [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. [GIN-debug] [WARNING] Running in &amp;#34;debug&amp;#34; mode. Switch to &amp;#34;release&amp;#34; mode in production. - using env: export GIN_MODE=release - using code: gin.</description>
+package main import &amp;#34;github.com/gin-gonic/gin&amp;#34; func main() { r := gin.Default() r.GET(&amp;#34;/ping&amp;#34;, func(c *gin.Context) { c.JSON(200, gin.H{ &amp;#34;message&amp;#34;: &amp;#34;pong&amp;#34;, }) }) r.Run() } $ curl localhost:8080/ping {&amp;#34;message&amp;#34;:&amp;#34;pong&amp;#34;} $ go run main.go [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. [GIN-debug] [WARNING] Running in &amp;#34;debug&amp;#34; mode. Switch to &amp;#34;release&amp;#34; mode in production. - using env: export GIN_MODE=release - using code: gin.SetMode(gin.ReleaseMode) [GIN-debug] GET /ping --&amp;gt; main.</description>
     </item>
     
     <item>
@@ -130,10 +128,10 @@ package main import &amp;#34;github.com/gin-gonic/gin&amp;#34; func main() { r :
       
       <guid>https://sourjp.github.io/posts/go-import/</guid>
       <description>import _ &amp;quot;hogehoge&amp;quot; の _ は、どういう意味があるんだろうと気になったので調べました。
-init()の実行が理由 packageの中身を利用しないが、init()関数が必要な場合に利用するようです。 なので次のように動作を試してみました。
+init()の実行が理由 packageの中身を利用せずに、init()関数が必要な場合に利用するようです。 なので次のように動作を試してみました。
 main.go
 package main import ( &amp;#34;fmt&amp;#34; _ &amp;#34;github.com/sourjp/practice/hello&amp;#34; ) func main() { fmt.Println(&amp;#34;Hi&amp;#34;) } hello/hello.go
-package hello import &amp;#34;fmt&amp;#34; func init() { fmt.Println(&amp;#34;hello&amp;#34;) } 実行してみるとpackage helloを使わないが、中に定義されているinit()が実行されていることがわかります。
+package hello import &amp;#34;fmt&amp;#34; func init() { fmt.Println(&amp;#34;hello&amp;#34;) } 実行してみるとpackage helloを使いませんが、中に定義されているinit()が実行されていることがわかります。
 $ go run main.go hello Hi 次に実際のpackageでの使われ方をみていきます。
 package imageの場合 package imageでは、Decode()を行うのにRegistration()で拡張子を登録する必要があります。
  Values of the Image interface are created either by calling functions such as NewRGBA and NewPaletted, or by calling Decode on an io.Reader containing image data in a format such as GIF, JPEG or PNG.</description>
@@ -166,12 +164,13 @@ package main import ( &amp;#34;flag&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;os&a
       <pubDate>Wed, 12 Aug 2020 22:18:08 +0900</pubDate>
       
       <guid>https://sourjp.github.io/posts/go-gosec/</guid>
-      <description>securego/gosecなるものを教えてもらった。 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。
-どんな内容をチェックしてくれる？ Available rulesがその一覧。
-もう少し細かいところは公式サイトにありますが、更新はされてなさそうですね。 GitHubは月に5-10回ぐらいcommitされているので活発そうです。
+      <description>securego/gosecなるものを教えてもらいました。 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。
+どんな内容をチェックしてくれる？ Available rulesがその一覧です。
+もう少し細かいところは公式サイトにありますが、更新はされてなさそうですが、調べ方は次に記載します。
 Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojectで採番している番号で、その元はCWEのようです。
 対応表を見ると、例えば G102 は CWE-200 にマッチしていて、CWE-22: Improper Limitation of a Pathname to a Restricted Directory (&amp;lsquo;Path Traversal&amp;rsquo;)とアクセスすれば良さそうです。
-// GetCwe creates a cwe object for a given RuleID func GetCwe(id string) Cwe { return Cwe{ID: id, URL: fmt.Sprintf(&amp;#34;https://cwe.mitre.org/data/definitions/%s.html&amp;#34;, id)} } // IssueToCWE maps gosec rules to CWEs var IssueToCWE = map[string]Cwe{ &amp;#34;G101&amp;#34;: GetCwe(&amp;#34;798&amp;#34;), &amp;#34;G102&amp;#34;: GetCwe(&amp;#34;200&amp;#34;), ---snip--- } 誰が使ってるの？ リストがありました。 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。</description>
+// GetCwe creates a cwe object for a given RuleID func GetCwe(id string) Cwe { return Cwe{ID: id, URL: fmt.Sprintf(&amp;#34;https://cwe.mitre.org/data/definitions/%s.html&amp;#34;, id)} } // IssueToCWE maps gosec rules to CWEs var IssueToCWE = map[string]Cwe{ &amp;#34;G101&amp;#34;: GetCwe(&amp;#34;798&amp;#34;), &amp;#34;G102&amp;#34;: GetCwe(&amp;#34;200&amp;#34;), ---snip--- } 使われてるの？ リストがありました。 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。
+使い方は？ いくつかオプションがありますが、基本はこれで良さそうです。 GitHub Actionsでも gosec の名前で公開されているのでCIへの組み込みも簡単そうですね。</description>
     </item>
     
     <item>
@@ -180,13 +179,12 @@ Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojec
       <pubDate>Tue, 11 Aug 2020 20:53:54 +0900</pubDate>
       
       <guid>https://sourjp.github.io/posts/hugo/</guid>
-      <description>Hugoについて Golang製の静的サイトジェネレータ。高速。
-Theme選び 今では結構選択肢が多い。シンプルが好みなので、Picklesを使うことにした。
- Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されているが、次を参考にするとGitHub Pagesが無料だし定番ぽい。
- 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考を読むとデプロイ方法は次の通りとわかったが、サクッと実装できずハマった。。
- blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  今回採用した1の方法について補足する。選んだ理由はHugoの設定関連をprivate repositoryにして隠すことができること。あと分かりやすい。
-例えば sample さんのGITHUBアカウントだと、repositoryを二つ作る。
- Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすること。
+      <description>Hugoについて Go言語の静的サイトジェネレータです。md形式でblogを作れて簡単です。
+Theme選び 出始め当時はテーマが少ないなんて記事も多かったですが、今では結構選択肢が多いようです。私はシンプルが好みなので、Picklesを使うことにしました。
+ Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されています。次を参考にGitHub Pagesが無料なので使うことします。
+ 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考URLを読むとデプロイ方法は次の通りとわかり１の手法にすることにしました。理由はHugoの設定関連をprivate repositoryにして隠すことができること、単純にわかりやすいからです。
+ blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  ただいくつかの点でハマったので補足情報をメモします。例えば sample さんのGITHUBアカウントだと、repositoryを二つ作ります。
+ Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすることです。
 こんな感じ。
 tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── archetypes ├── config.toml ├── content ├── data ├── layouts ├── public // submoduleでsample/sample.</description>
     </item>

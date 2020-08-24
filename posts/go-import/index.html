@@ -97,7 +97,7 @@ if (!doNotTrack) {
   <section id="js-article" class="p-article__body">
     <p><code>import _ &quot;hogehoge&quot;</code> の <code>_</code> は、どういう意味があるんだろうと気になったので調べました。</p>
 <h1 id="initの実行が理由">init()の実行が理由</h1>
-<p>packageの中身を利用しないが、init()関数が必要な場合に利用するようです。
+<p>packageの中身を利用せずに、init()関数が必要な場合に利用するようです。
 なので次のように動作を試してみました。</p>
 <p>main.go</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
@@ -119,7 +119,7 @@ if (!doNotTrack) {
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>() {
 	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello&#34;</span>)
 }
-</code></pre></div><p>実行してみるとpackage helloを使わないが、中に定義されているinit()が実行されていることがわかります。</p>
+</code></pre></div><p>実行してみるとpackage helloを使いませんが、中に定義されているinit()が実行されていることがわかります。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go
 hello
 Hi
@@ -135,16 +135,16 @@ Hi
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>() {
 	<span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">RegisterFormat</span>(<span style="color:#e6db74">&#34;png&#34;</span>, <span style="color:#a6e22e">pngHeader</span>, <span style="color:#a6e22e">Decode</span>, <span style="color:#a6e22e">DecodeConfig</span>)
 }
-</code></pre></div><p>つまり<code>import _ &quot;image/png&quot;</code> を実行すると、<code>init()</code> の <code>image.RegisterFormat()</code> が実行されるので <code>image.Decode()</code> で変換できるということです。</p>
+</code></pre></div><p>つまり <code>import _ &quot;image/png&quot;</code> を実行すると、<code>init()</code> の <code>image.RegisterFormat()</code> が実行されるので <code>image.Decode()</code> で変換できるということです。</p>
 <h1 id="package-pgの場合">package pgの場合</h1>
-<p>DB driverを利用する時にも、<code>import _ &quot;github.com/lib/pq&quot;</code> と書く。この時は何しているんでしょう？</p>
+<p>DB driverを利用する時にも、<code>import _ &quot;github.com/lib/pq&quot;</code> と書きます。この時は何しているんでしょう？</p>
 <p><code>init()</code> を見つけました。これも、sqlのdriverとして登録してくれています。これによって、<code>sql.Open(&quot;postgres&quot;, ...)</code> が利用できるようなるということですね。</p>
 <p><a href="https://github.com/lib/pq/blob/master/conn.go#L51-L53">lib/pq/blob/master/conn.go</a></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>() {
 	<span style="color:#a6e22e">sql</span>.<span style="color:#a6e22e">Register</span>(<span style="color:#e6db74">&#34;postgres&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Driver</span>{})
 }
 </code></pre></div><h1 id="まとめ">まとめ</h1>
-<p>次のように理解ができました。</p>
+<p>学んだことを整理します。</p>
 <ul>
 <li><code>import _ &quot;hoge&quot;</code> はhoge packageのinit()を実行する</li>
 <li>利用するケースは、それをwrapしたpackageがある時(package image, package sqlなど)</li>
