@@ -78,6 +78,60 @@ if (!doNotTrack) {
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-import/">Go import _ ってなんだ</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-16T12:59:43&#43;09:00">
+  Aug 16, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    import _ &quot;hogehoge&quot; の _ は、どういう意味があるんだろうと気になったので調べました。
+init()の実行が理由 packageの中身を利用せずに、init()関数が必要な場合に利用するようです。 なので次のように動作を試してみました。
+main.go
+package main import ( &#34;fmt&#34; _ &#34;github.com/sourjp/practice/hello&#34; ) func main() { fmt.Println(&#34;Hi&#34;) } hello/hello.go
+package hello import &#34;fmt&#34; func init() { fmt.Println(&#34;hello&#34;) } 実行してみるとpackage helloを使いませんが、中に定義されているinit()が実行されていることがわかります。
+$ go run main.go hello Hi 次に実際のpackageでの使われ方をみていきます。
+package imageの場合 package imageでは、Decode()を行うのにRegistration()で拡張子を登録する必要があります。
+ Values of the Image interface are created either by calling functions such as NewRGBA and NewPaletted, or by calling Decode on an io.Reader containing image data in a format such as GIF, JPEG or PNG.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-import/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-cmd/">Go Command Line Tool Packagesをざっと試す</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-14T09:42:40&#43;09:00">
+  Aug 14, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    Go言語でコマンドラインツールを作ろうと思いましたが、サブコマンドが必要になりそうだったので調べました。 書きやすいものを探したいので次のコマンドを作るという前提で比較していきます。
+ ./cmd foo -name=foo args ./cmd bar -name=bar args  対象は標準パッケージと、みんなのGo言語にピックアップされている3rd packageも試してみます。
+flag (標準) 大変わかりやすかったので、Go by Example: Command-Line Subcommandsをベースに簡略化して考えたいと思います。
+package main import ( &#34;flag&#34; &#34;fmt&#34; &#34;os&#34; ) func main() { fooCmd := flag.NewFlagSet(&#34;foo&#34;, flag.ExitOnError) fooName := fooCmd.String(&#34;name&#34;, &#34;&#34;, &#34;name&#34;) barCmd := flag.NewFlagSet(&#34;bar&#34;, flag.ExitOnError) barName := barCmd.String(&#34;name&#34;, 0, &#34;name&#34;) if len(os.Args) &lt; 2 { fmt.Println(&#34;expected &#39;foo&#39; or &#39;bar&#39; subcommands&#34;) os.Exit(1) } switch os.Args[1] { case &#34;foo&#34;: fooCmd.Parse(os.Args[2:]) fmt.Println(&#34;subcommand &#39;foo&#39;&#34;) fmt.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-cmd/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/devops-argo/">ArgoCDをArgoCDで管理 &#43; Kustomize</a></h2>
     <p class="c-article__meta">
       Posted on

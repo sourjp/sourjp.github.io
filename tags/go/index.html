@@ -78,6 +78,59 @@ if (!doNotTrack) {
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-gin-graceful/">Go Gin Graceful-Shutdownについて</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-25T18:43:18&#43;09:00">
+  Aug 25, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    前回にてgin-gonic/ginで触りこぼしていたGraceful-Shutdownをちゃんと試してみました。
+Graceful Shutdown 名前の通り終了処理にあたってセッションがクローズするまでなるべく待ってあげることです。
+調べた結果は簡単に次の通りです。
+ Ginも標準パッケージもGraceful処理は変わらない contextで最長の待ち時間を決定できる  Graceful-ShutdownのManuallyに記載されている方法をまずは試してみます。
+$ curl localhost:8080 で5秒後に返信がきます。
+$ go run main.go [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. [GIN-debug] [WARNING] Running in &#34;debug&#34; mode. Switch to &#34;release&#34; mode in production. - using env: export GIN_MODE=release - using code: gin.SetMode(gin.ReleaseMode) [GIN-debug] GET / --&gt; main.main.func1 (3 handlers) [GIN] 2020/08/25 - 15:19:54 | 200 | 5.003282194s | 127.0.0.1 | GET &#34;/&#34; ^C # &lt;--- SIGINT 2020/08/25 15:19:58 Shutting down server.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-gin-graceful/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-gin-validator/">Go Gin Validatorについて</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-24T19:13:48&#43;09:00">
+  Aug 24, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    前回にてgin-gonic/ginで触りこぼしていたValidatorをちゃんと試してみました。
+Validator Model binding and validationに記載されているようにginではgo-playground/validatorを使っています。
+Qiita: go-playground/validator リクエストパラメータ向けValidationパターンまとめで多くのパターンが整理されているので、こちらが参考になります。
+QueryとBodyの両方で試しましたが、問題なくvalidateかけれていますね。
+func main() { r := gin.Default() r.GET(&#34;/&#34;, func(c *gin.Context) { var usr User if err := c.ShouldBindQuery(&amp;usr); err != nil { c.JSON(http.StatusBadRequest, gin.H{&#34;error&#34;: err.Error()}) return } c.JSON(http.StatusOK, usr) }) r.POST(&#34;/&#34;, func(c *gin.Context) { var usr User if err := c.ShouldBindJSON(&amp;usr); err != nil { c.JSON(http.StatusBadRequest, gin.H{&#34;error&#34;: err.Error()}) return } c.JSON(http.StatusOK, usr) }) r.Run(&#34;:8080&#34;) } type User struct { Name string `form:&#34;name&#34;` Age int `form:&#34;age&#34; binding:&#34;required,max=10,min=5&#34;` } # Test Query $ curl &#39;localhost:8080?
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-gin-validator/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-error/">Go Errorの基本的なこと</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -292,34 +345,6 @@ package main import ( &#34;flag&#34; &#34;fmt&#34; &#34;os&#34; ) func main() { 
 
 
 
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-gosec/">gosecいいね</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-12T22:18:08&#43;09:00">
-  Aug 12, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    securego/gosecなるものを教えてもらいました。 Go ASTでセキュリティの問題がないかをチェックしてくれるようです。
-どんな内容をチェックしてくれる？ Available rulesがその一覧です。
-もう少し細かいところは公式サイトにありますが、更新はされてなさそうですが、調べ方は次に記載します。
-Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojectで採番している番号で、その元はCWEのようです。
-対応表を見ると、例えば G102 は CWE-200 にマッチしていて、CWE-22: Improper Limitation of a Pathname to a Restricted Directory (&lsquo;Path Traversal&rsquo;)とアクセスすれば良さそうです。
-// GetCwe creates a cwe object for a given RuleID func GetCwe(id string) Cwe { return Cwe{ID: id, URL: fmt.Sprintf(&#34;https://cwe.mitre.org/data/definitions/%s.html&#34;, id)} } // IssueToCWE maps gosec rules to CWEs var IssueToCWE = map[string]Cwe{ &#34;G101&#34;: GetCwe(&#34;798&#34;), &#34;G102&#34;: GetCwe(&#34;200&#34;), ---snip--- } 使われてるの？ リストがありました。 GitlabやVMwareなどの企業しかり、KubernetesやJenkins Xなどのプロジェクトにも使われるようですね。
-使い方は？ いくつかオプションがありますが、基本はこれで良さそうです。 GitHub Actionsでも gosec の名前で公開されているのでCIへの組み込みも簡単そうですね。
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/go-gosec/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-
 <nav class="c-pagination p-pagination">
   <div class="c-pagination__ctrl">
     <div class="c-pagination__newer">
@@ -327,9 +352,11 @@ Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojec
     </div>
     <div class="c-pagination__older">
       
+      <a href="/tags/go/page/2/">Older</a>
+      
     </div>
   </div>
-  <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
+  <span class="c-pagination__count p-pagination__count">Page 1 of 2</span>
 </nav>
 
 

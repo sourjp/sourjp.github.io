@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>note.</title>
-  <meta property="og:title" content="note." />
-  <meta name="twitter:title" content="note." />
+  <title>go</title>
+  <meta property="og:title" content="go" />
+  <meta name="twitter:title" content="go" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="sourjp"/>
   <meta property="og:site_name" content="note." />
-  <meta property="og:url" content="https://sourjp.github.io/" />
+  <meta property="og:url" content="https://sourjp.github.io/tags/go/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -49,8 +49,6 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="https://sourjp.github.io/css/style.css" />
   
   
-  <link href="https://sourjp.github.io/index.xml" rel="alternate" type="application/rss+xml" title="note." />
-  
   
   <script type="text/javascript" src="https://sourjp.github.io/js/bundle.js"></script>
   
@@ -73,84 +71,12 @@ if (!doNotTrack) {
 
   <main id="main" class="l-main">
 
+<h2 class="c-title p-tag-title">go</h2>
 
 
-  
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-import/">Go import _ ってなんだ</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-16T12:59:43&#43;09:00">
-  Aug 16, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    import _ &quot;hogehoge&quot; の _ は、どういう意味があるんだろうと気になったので調べました。
-init()の実行が理由 packageの中身を利用せずに、init()関数が必要な場合に利用するようです。 なので次のように動作を試してみました。
-main.go
-package main import ( &#34;fmt&#34; _ &#34;github.com/sourjp/practice/hello&#34; ) func main() { fmt.Println(&#34;Hi&#34;) } hello/hello.go
-package hello import &#34;fmt&#34; func init() { fmt.Println(&#34;hello&#34;) } 実行してみるとpackage helloを使いませんが、中に定義されているinit()が実行されていることがわかります。
-$ go run main.go hello Hi 次に実際のpackageでの使われ方をみていきます。
-package imageの場合 package imageでは、Decode()を行うのにRegistration()で拡張子を登録する必要があります。
- Values of the Image interface are created either by calling functions such as NewRGBA and NewPaletted, or by calling Decode on an io.Reader containing image data in a format such as GIF, JPEG or PNG.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/go-import/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
 
 
-  
-    
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-cmd/">Go Command Line Tool Packagesをざっと試す</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-14T09:42:40&#43;09:00">
-  Aug 14, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Go言語でコマンドラインツールを作ろうと思いましたが、サブコマンドが必要になりそうだったので調べました。 書きやすいものを探したいので次のコマンドを作るという前提で比較していきます。
- ./cmd foo -name=foo args ./cmd bar -name=bar args  対象は標準パッケージと、みんなのGo言語にピックアップされている3rd packageも試してみます。
-flag (標準) 大変わかりやすかったので、Go by Example: Command-Line Subcommandsをベースに簡略化して考えたいと思います。
-package main import ( &#34;flag&#34; &#34;fmt&#34; &#34;os&#34; ) func main() { fooCmd := flag.NewFlagSet(&#34;foo&#34;, flag.ExitOnError) fooName := fooCmd.String(&#34;name&#34;, &#34;&#34;, &#34;name&#34;) barCmd := flag.NewFlagSet(&#34;bar&#34;, flag.ExitOnError) barName := barCmd.String(&#34;name&#34;, 0, &#34;name&#34;) if len(os.Args) &lt; 2 { fmt.Println(&#34;expected &#39;foo&#39; or &#39;bar&#39; subcommands&#34;) os.Exit(1) } switch os.Args[1] { case &#34;foo&#34;: fooCmd.Parse(os.Args[2:]) fmt.Println(&#34;subcommand &#39;foo&#39;&#34;) fmt.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/go-cmd/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-  
-    
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/devops-argo/">ArgoCDをArgoCDで管理 &#43; Kustomize</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-13T14:47:59&#43;09:00">
-  Aug 13, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Qiita: ArgoCDをArgoCDで管理 + Kustomizeに書きました。
-  </div>
-  
-</article>
-
-
-  
-    
-  <article class="c-article p-list-article">
+<article class="c-article p-list-article">
   <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-gosec/">gosecいいね</a></h2>
     <p class="c-article__meta">
@@ -176,41 +102,12 @@ Gxxxって何の番号？ README.mdに書いてありました。 gosecのprojec
 </article>
 
 
-  
-    
-  <article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/hugo/">Hugo始めました</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-11T20:53:54&#43;09:00">
-  Aug 11, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Hugoについて Go言語の静的サイトジェネレータです。md形式でblogを作れて簡単です。
-Theme選び 出始め当時はテーマが少ないなんて記事も多かったですが、今では結構選択肢が多いようです。私はシンプルが好みなので、Picklesを使うことにしました。
- Pickles Cactus  Deploy方法 AWS, Firebaseなど色々用意されています。次を参考にGitHub Pagesが無料なので使うことします。
- 公式 Hugoで1からテーマを作ってGitHub Pagesにデプロイする  参考URLを読むとデプロイ方法は次の通りとわかり１の手法にすることにしました。理由はHugoの設定関連をprivate repositoryにして隠すことができること、単純にわかりやすいからです。
- blog用のrepositoryの master branchから配信 blog用のrepositoryの gh-pages branchから配信 blog用のrepositoryの master branchの /dir から配信  ただいくつかの点でハマったので補足情報をメモします。例えば sample さんのGITHUBアカウントだと、repositoryを二つ作ります。
- Hugoの設定ファイルを管理するrepository e.g. sample/blog GitHub Pages配信repository e.g. sample/sample.github.io  ポイントは sample/blog/ に生成される /public を、sample/sample.github.io のsubmoduleとすることです。
-こんな感じ。
-tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── archetypes ├── config.toml ├── content ├── data ├── layouts ├── public // submoduleでsample/sample.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/hugo/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
 
 <nav class="c-pagination p-pagination">
   <div class="c-pagination__ctrl">
     <div class="c-pagination__newer">
       
-      <a href="/">Newer</a>
+      <a href="/tags/go/">Newer</a>
       
     </div>
     <div class="c-pagination__older">
@@ -219,7 +116,8 @@ tree -L 1 sample/blog // Hugo用のrepository ├── Makefile ├── arche
   </div>
   <span class="c-pagination__count p-pagination__count">Page 2 of 2</span>
 </nav>
- 
+
+
 <aside class="p-author">
   
   

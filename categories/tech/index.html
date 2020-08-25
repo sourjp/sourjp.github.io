@@ -78,6 +78,59 @@ if (!doNotTrack) {
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-gin-graceful/">Go Gin Graceful-Shutdownについて</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-25T18:43:18&#43;09:00">
+  Aug 25, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    前回にてgin-gonic/ginで触りこぼしていたGraceful-Shutdownをちゃんと試してみました。
+Graceful Shutdown 名前の通り終了処理にあたってセッションがクローズするまでなるべく待ってあげることです。
+調べた結果は簡単に次の通りです。
+ Ginも標準パッケージもGraceful処理は変わらない contextで最長の待ち時間を決定できる  Graceful-ShutdownのManuallyに記載されている方法をまずは試してみます。
+$ curl localhost:8080 で5秒後に返信がきます。
+$ go run main.go [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. [GIN-debug] [WARNING] Running in &#34;debug&#34; mode. Switch to &#34;release&#34; mode in production. - using env: export GIN_MODE=release - using code: gin.SetMode(gin.ReleaseMode) [GIN-debug] GET / --&gt; main.main.func1 (3 handlers) [GIN] 2020/08/25 - 15:19:54 | 200 | 5.003282194s | 127.0.0.1 | GET &#34;/&#34; ^C # &lt;--- SIGINT 2020/08/25 15:19:58 Shutting down server.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-gin-graceful/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-gin-validator/">Go Gin Validatorについて</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-24T19:13:48&#43;09:00">
+  Aug 24, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    前回にてgin-gonic/ginで触りこぼしていたValidatorをちゃんと試してみました。
+Validator Model binding and validationに記載されているようにginではgo-playground/validatorを使っています。
+Qiita: go-playground/validator リクエストパラメータ向けValidationパターンまとめで多くのパターンが整理されているので、こちらが参考になります。
+QueryとBodyの両方で試しましたが、問題なくvalidateかけれていますね。
+func main() { r := gin.Default() r.GET(&#34;/&#34;, func(c *gin.Context) { var usr User if err := c.ShouldBindQuery(&amp;usr); err != nil { c.JSON(http.StatusBadRequest, gin.H{&#34;error&#34;: err.Error()}) return } c.JSON(http.StatusOK, usr) }) r.POST(&#34;/&#34;, func(c *gin.Context) { var usr User if err := c.ShouldBindJSON(&amp;usr); err != nil { c.JSON(http.StatusBadRequest, gin.H{&#34;error&#34;: err.Error()}) return } c.JSON(http.StatusOK, usr) }) r.Run(&#34;:8080&#34;) } type User struct { Name string `form:&#34;name&#34;` Age int `form:&#34;age&#34; binding:&#34;required,max=10,min=5&#34;` } # Test Query $ curl &#39;localhost:8080?
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-gin-validator/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-error/">Go Errorの基本的なこと</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -281,60 +334,6 @@ package main import &#34;github.com/gin-gonic/gin&#34; func main() { r := gin.De
   </div>
   
   <a href="https://sourjp.github.io/posts/go-gin/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-import/">Go import _ ってなんだ</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-16T12:59:43&#43;09:00">
-  Aug 16, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    import _ &quot;hogehoge&quot; の _ は、どういう意味があるんだろうと気になったので調べました。
-init()の実行が理由 packageの中身を利用せずに、init()関数が必要な場合に利用するようです。 なので次のように動作を試してみました。
-main.go
-package main import ( &#34;fmt&#34; _ &#34;github.com/sourjp/practice/hello&#34; ) func main() { fmt.Println(&#34;Hi&#34;) } hello/hello.go
-package hello import &#34;fmt&#34; func init() { fmt.Println(&#34;hello&#34;) } 実行してみるとpackage helloを使いませんが、中に定義されているinit()が実行されていることがわかります。
-$ go run main.go hello Hi 次に実際のpackageでの使われ方をみていきます。
-package imageの場合 package imageでは、Decode()を行うのにRegistration()で拡張子を登録する必要があります。
- Values of the Image interface are created either by calling functions such as NewRGBA and NewPaletted, or by calling Decode on an io.Reader containing image data in a format such as GIF, JPEG or PNG.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/go-import/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-cmd/">Go Command Line Tool Packagesをざっと試す</a></h2>
-    <p class="c-article__meta">
-      Posted on
-<time datetime="2020-08-14T09:42:40&#43;09:00">
-  Aug 14, 2020
-</time>
-
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Go言語でコマンドラインツールを作ろうと思いましたが、サブコマンドが必要になりそうだったので調べました。 書きやすいものを探したいので次のコマンドを作るという前提で比較していきます。
- ./cmd foo -name=foo args ./cmd bar -name=bar args  対象は標準パッケージと、みんなのGo言語にピックアップされている3rd packageも試してみます。
-flag (標準) 大変わかりやすかったので、Go by Example: Command-Line Subcommandsをベースに簡略化して考えたいと思います。
-package main import ( &#34;flag&#34; &#34;fmt&#34; &#34;os&#34; ) func main() { fooCmd := flag.NewFlagSet(&#34;foo&#34;, flag.ExitOnError) fooName := fooCmd.String(&#34;name&#34;, &#34;&#34;, &#34;name&#34;) barCmd := flag.NewFlagSet(&#34;bar&#34;, flag.ExitOnError) barName := barCmd.String(&#34;name&#34;, 0, &#34;name&#34;) if len(os.Args) &lt; 2 { fmt.Println(&#34;expected &#39;foo&#39; or &#39;bar&#39; subcommands&#34;) os.Exit(1) } switch os.Args[1] { case &#34;foo&#34;: fooCmd.Parse(os.Args[2:]) fmt.Println(&#34;subcommand &#39;foo&#39;&#34;) fmt.
-  </div>
-  
-  <a href="https://sourjp.github.io/posts/go-cmd/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 

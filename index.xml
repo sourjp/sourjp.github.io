@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; sourjp</copyright>
-    <lastBuildDate>Sat, 22 Aug 2020 18:34:02 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2020 18:43:18 +0900</lastBuildDate>
     
 	<atom:link href="https://sourjp.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go Gin Graceful-Shutdownについて</title>
+      <link>https://sourjp.github.io/posts/go-gin-graceful/</link>
+      <pubDate>Tue, 25 Aug 2020 18:43:18 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/posts/go-gin-graceful/</guid>
+      <description>前回にてgin-gonic/ginで触りこぼしていたGraceful-Shutdownをちゃんと試してみました。
+Graceful Shutdown 名前の通り終了処理にあたってセッションがクローズするまでなるべく待ってあげることです。
+調べた結果は簡単に次の通りです。
+ Ginも標準パッケージもGraceful処理は変わらない contextで最長の待ち時間を決定できる  Graceful-ShutdownのManuallyに記載されている方法をまずは試してみます。
+$ curl localhost:8080 で5秒後に返信がきます。
+$ go run main.go [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. [GIN-debug] [WARNING] Running in &amp;#34;debug&amp;#34; mode. Switch to &amp;#34;release&amp;#34; mode in production. - using env: export GIN_MODE=release - using code: gin.SetMode(gin.ReleaseMode) [GIN-debug] GET / --&amp;gt; main.main.func1 (3 handlers) [GIN] 2020/08/25 - 15:19:54 | 200 | 5.003282194s | 127.0.0.1 | GET &amp;#34;/&amp;#34; ^C # &amp;lt;--- SIGINT 2020/08/25 15:19:58 Shutting down server.</description>
+    </item>
+    
+    <item>
+      <title>Go Gin Validatorについて</title>
+      <link>https://sourjp.github.io/posts/go-gin-validator/</link>
+      <pubDate>Mon, 24 Aug 2020 19:13:48 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/posts/go-gin-validator/</guid>
+      <description>前回にてgin-gonic/ginで触りこぼしていたValidatorをちゃんと試してみました。
+Validator Model binding and validationに記載されているようにginではgo-playground/validatorを使っています。
+Qiita: go-playground/validator リクエストパラメータ向けValidationパターンまとめで多くのパターンが整理されているので、こちらが参考になります。
+QueryとBodyの両方で試しましたが、問題なくvalidateかけれていますね。
+func main() { r := gin.Default() r.GET(&amp;#34;/&amp;#34;, func(c *gin.Context) { var usr User if err := c.ShouldBindQuery(&amp;amp;usr); err != nil { c.JSON(http.StatusBadRequest, gin.H{&amp;#34;error&amp;#34;: err.Error()}) return } c.JSON(http.StatusOK, usr) }) r.POST(&amp;#34;/&amp;#34;, func(c *gin.Context) { var usr User if err := c.ShouldBindJSON(&amp;amp;usr); err != nil { c.JSON(http.StatusBadRequest, gin.H{&amp;#34;error&amp;#34;: err.Error()}) return } c.JSON(http.StatusOK, usr) }) r.Run(&amp;#34;:8080&amp;#34;) } type User struct { Name string `form:&amp;#34;name&amp;#34;` Age int `form:&amp;#34;age&amp;#34; binding:&amp;#34;required,max=10,min=5&amp;#34;` } # Test Query $ curl &amp;#39;localhost:8080?</description>
+    </item>
     
     <item>
       <title>Go Errorの基本的なこと</title>

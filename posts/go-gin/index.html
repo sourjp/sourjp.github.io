@@ -497,7 +497,7 @@ $ curl localhost:8080/purejson
 <h1 id="run-multiple-service-using-gin">Run multiple service using Gin</h1>
 <p>goroutineによって複数のhttp serverを同時に立ち上げるようですが、、使うケースってなんだろう。。</p>
 <h1 id="graceful-shutdown-or-restart">Graceful shutdown or restart</h1>
-<p>API WebサーバーをGracefulにshutdownする方法として以前は<code>endless</code>などの3rd partyがあったが、標準パッケージにShutdown()が追加されたので、次のようなテクニックが生まれたようです。</p>
+<p>API WebサーバーをGracefulにshutdownする方法として以前は<code>endless</code>などの3rd partyを使うテクニックがあったようですが、標準パッケージにShutdown()が追加されたので、次のようなテクニックが生まれたようです。</p>
 <p>kill signalを受け取るchannelとserverを動かすchannelを別にして、kill signalを受け取ったらShutdown()を動作させて、Graceful Shutdownを実現するみたいですね。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
 	<span style="color:#a6e22e">router</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
