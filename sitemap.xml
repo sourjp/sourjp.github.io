@@ -4,7 +4,37 @@
   
   <url>
     <loc>https://sourjp.github.io/categories/</loc>
-    <lastmod>2020-08-25T18:43:18+09:00</lastmod>
+    <lastmod>2020-08-26T09:33:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/tags/go/</loc>
+    <lastmod>2020-08-26T09:33:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/posts/go-interface/</loc>
+    <lastmod>2020-08-26T09:33:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/</loc>
+    <lastmod>2020-08-26T09:33:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/posts/</loc>
+    <lastmod>2020-08-26T09:33:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/tags/</loc>
+    <lastmod>2020-08-26T09:33:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sourjp.github.io/categories/tech/</loc>
+    <lastmod>2020-08-26T09:33:01+09:00</lastmod>
   </url>
   
   <url>
@@ -13,32 +43,7 @@
   </url>
   
   <url>
-    <loc>https://sourjp.github.io/tags/go/</loc>
-    <lastmod>2020-08-25T18:43:18+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sourjp.github.io/posts/go-gin-graceful/</loc>
-    <lastmod>2020-08-25T18:43:18+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sourjp.github.io/</loc>
-    <lastmod>2020-08-25T18:43:18+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sourjp.github.io/posts/</loc>
-    <lastmod>2020-08-25T18:43:18+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sourjp.github.io/tags/</loc>
-    <lastmod>2020-08-25T18:43:18+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sourjp.github.io/categories/tech/</loc>
     <lastmod>2020-08-25T18:43:18+09:00</lastmod>
   </url>
   

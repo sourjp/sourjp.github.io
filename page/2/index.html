@@ -78,6 +78,31 @@ if (!doNotTrack) {
   
   <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-gin/">Go Gin packageの基本を触る</a></h2>
+    <p class="c-article__meta">
+      Posted on
+<time datetime="2020-08-16T16:45:31&#43;09:00">
+  Aug 16, 2020
+</time>
+
+    </p>
+  </header>
+  <div class="c-article__summary">
+    gin-gonic/ginが圧倒的な人気を誇っているので、README.mdにある一通りの機能でWebAPI(JSON format)の想定で関わりそうな機能を試していきます。
+記載してあるコードはREADME.mdにあるコードを抜粋したり、改変したりして記載しています。
+QuickStart とりあえずQuickStartのコードを試してみます。
+package main import &#34;github.com/gin-gonic/gin&#34; func main() { r := gin.Default() r.GET(&#34;/ping&#34;, func(c *gin.Context) { c.JSON(200, gin.H{ &#34;message&#34;: &#34;pong&#34;, }) }) r.Run() } $ curl localhost:8080/ping {&#34;message&#34;:&#34;pong&#34;} $ go run main.go [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. [GIN-debug] [WARNING] Running in &#34;debug&#34; mode. Switch to &#34;release&#34; mode in production. - using env: export GIN_MODE=release - using code: gin.SetMode(gin.ReleaseMode) [GIN-debug] GET /ping --&gt; main.
+  </div>
+  
+  <a href="https://sourjp.github.io/posts/go-gin/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+  
+    
+  <article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://sourjp.github.io/posts/go-import/">Go import _ ってなんだ</a></h2>
     <p class="c-article__meta">
       Posted on
