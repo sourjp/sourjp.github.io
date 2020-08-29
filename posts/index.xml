@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; sourjp</copyright>
-    <lastBuildDate>Wed, 26 Aug 2020 09:33:01 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2020 20:23:15 +0900</lastBuildDate>
     
 	<atom:link href="https://sourjp.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>EC2の初期設定</title>
+      <link>https://sourjp.github.io/posts/aws-ec2/</link>
+      <pubDate>Sat, 29 Aug 2020 20:23:15 +0900</pubDate>
+      
+      <guid>https://sourjp.github.io/posts/aws-ec2/</guid>
+      <description>コンテナ環境に慣れてしまうとEC2久しぶりに使うかってなると、あれなんだっけな・・・って何回も調べ直してたので整理します。
+# パッケージ更新 sudo yum update -y # Asia/Tokyoに更新 sudo timedatectl set-timezone Asia/Tokyo # localeを日本にする sudo localectl set-locale LANG=ja_JP.UTF-8 # ec2-userを変更 sudo useradd USERNAME sudo cp -arp /home/ec2-user/.ssh/ /home/USERNAME/ sudo chown -R USERNAME /home/USERNAME/.ssh # 新規userをsudo使えるように書き換える sudo visudo -f /etc/sudoers.d/90-cloud-init-users &amp;gt; # Created by cloud-init v. 19.3-3.amzn2 on Sat, 29 Aug 2020 10:48:59 +0000 &amp;gt; &amp;gt; # User rules for ec2-user &amp;gt; # ec2-user ALL=(ALL) NOPASSWD:ALL &amp;gt; USERNAME admin ALL=(ALL) NOPASSWD:ALL # root権限持っているか確認 sudo su - exit # ec2-userを削除する sudo userdel -r ec2-user それだけです。</description>
+    </item>
     
     <item>
       <title>Go Interfaceを満たしているか？</title>
